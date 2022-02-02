@@ -1,4 +1,4 @@
-import axios, { Axios, AxiosInstance, AxiosRequestConfig} from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 
 const PUBLIC_API = process.env.NEXT_PUBLIC_API;
 const PUBLIC_API_IMAGES = process.env.NEXT_PUBLIC_API;
