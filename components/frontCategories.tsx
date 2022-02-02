@@ -4,6 +4,7 @@ import Link from "next/link";
 import axios from "axios";
 import api from "../api";
 import { Picture } from "../models/models";
+import useSWR from "swr";
 
 interface CategoryProps{
     name: string;
@@ -11,25 +12,19 @@ interface CategoryProps{
     href: string;
 }
 
+
+async function getPictures (category: string){
+    const result = await api.get<{ version: { pictures: Picture[] } [] } []>(`/product?filter=categories=${category}&projection=version.pictures`);
+    return result.flatMap(version => version.version.flatMap(ver => ver.pictures));
+}
+
 export default function FrontCategories(props: CategoryProps){
-    const [pictures, setPictures] = useState<Picture[]>()
-    useEffect(() => {
-        getPictures()
-    }, [])
-    
-    function getPictures(){
-        api.get<{ version: { pictures: Picture[] } [] } []>(`/product?filter=categories=${props.name}&projection=version.pictures`).then((res) => {
-            if(res) {
-                let pictures = res.flatMap(version => version.version.flatMap(ver => ver.pictures))
-                setPictures(pictures);
-            }
-        });
-    }
+    const {data: pictures, error} = useSWR<Picture[]>(getPictures)
 
     return(
         <Link href={props.href} passHref>
             <a>
-                <div className={"relative rounded cursor-pointer flex flex-row bg-gray-600 shadow-2xl " + props.className} onClick={getPictures}>
+                <div className={`relative rounded cursor-pointer flex flex-row bg-gray-600 shadow-2xl ${props.className}`} >
                         <div className="z-50 absolute top-1/2 w-full flex justify-center">
                             <div className="w-full bg-black bg-opacity-50 p-1 mx-2">
                                 <h1 className="text-center capitalize font-thin text-white text-3xl tracking-widest w-full">

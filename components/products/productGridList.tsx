@@ -5,6 +5,8 @@ import ProductGrid from "./productGrid";
 import Product from "./product";
 import axios from "axios";
 import Link from "next/link";
+import api from "../../api";
+import useSWR from "swr";
 
 const PUBLIC_API = process.env.NEXT_PUBLIC_API;
 
@@ -16,14 +18,9 @@ type CategoryGridProps = {
 
 export default function ProductCategoriesGrid(props: CategoryGridProps){
     const [category, setCategory] = useState(props.categories[0]);
-    const [products, setProducts] = useState<ProductModel[]>([]);
+    const {data, error} = useSWR<ProductModel[]>(category, getProductsByCategory);
 
-    useEffect(() => {
-        (async () => {
-            let products = await getProductsByCategory(category)
-            setProducts(products);
-        })()
-    }, [category]);
+    const products = data;
     
     return (
         <div className={props.className}>
@@ -32,7 +29,7 @@ export default function ProductCategoriesGrid(props: CategoryGridProps){
             }} 
             selected={props.categories[0]}/>
             <div className="px-10">
-                <ProductGrid products={products} />
+                <ProductGrid products={products || []} />
             </div>
             <div className="bg-gray-900 mx-auto pb-5 justify-center flex">
             <Link passHref href={`/product/category/${category}`} >
@@ -46,69 +43,6 @@ export default function ProductCategoriesGrid(props: CategoryGridProps){
 }
 
 let getProductsByCategory = async (category: string) => {
-    let products = await axios.get<ProductModel[]>(PUBLIC_API + `/product?filter=categories=${category}`);
-    console.log(products.data);
-    return products.data;
+    let products = await api.get<ProductModel[]>(`/product?filter=categories=${category}`);
+    return products;
 }
-
-/*
-import { Component, ReactElement, useEffect, useState } from "react";
-import { ProductModel } from "../../models/models";
-import List from "../list";
-import ProductGrid from "./productGrid";
-import Product from "./product";
-import axios from "axios";
-import Link from "next/link";
-
-const PUBLIC_API = process.env.NEXT_PUBLIC_API;
-
-interface GridProps{
-    categories: string[];
-    categoryProducts: ProductModel[];
-}
-
-interface GridState{
-    category: string;
-    products: ProductModel[];
-}
-
-export default class ProductCategoriesGrid extends Component<GridProps, GridState>{
-    constructor(props: GridProps){
-        super(props);
-        this.state = {
-            category: props.categories[0],
-            products: []
-        }
-    }
-    async componentDidMount(){
-        console.log("how often does it mount?")
-        this.setState({
-            products: await getProductsByCategory(this.state.category)
-        })
-    }
-
-    render(){
-        return (
-            <div className="bg-gray-900">
-                <List 
-                    headers={this.props.categories} 
-                    onChange={async (selected, event) => {
-                        this.setState({
-                            category: selected,
-                            products: await getProductsByCategory(selected),
-                        });
-                    }}
-                selected={this.props.categories[0]}/>
-                <div className="px-10">
-                    <ProductGrid products={this.state.products} />
-                </div>
-            </div>
-        )
-    }
-}
-
-let getProductsByCategory = async (category: string) => {
-    let products = await axios.get<ProductModel[]>(PUBLIC_API + `/product?filter=categories=${category}`);
-    return products.data;
-}
-*/

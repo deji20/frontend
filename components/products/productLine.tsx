@@ -6,6 +6,7 @@ import ProductHero from "./productHero";
 import Link from "next/link";
 import Pricetag from "../pricetag";
 import UseCart from "../../services/cartHook";
+import useSWR from "swr";
 
 interface ProductLineProps{
     id: string;
@@ -13,17 +14,10 @@ interface ProductLineProps{
 }
 
 export default function ProductLine( props: ProductLineProps ){
-    const [product, setProduct] = useState<ProductModel>();
+    const {data, error} = useSWR<ProductModel>(`product/${props.id}`);
     const [cart, setCart] = UseCart();
-
-    useEffect(() => {
-        ( async () =>  {
-            let res = await api.get<ProductModel>(`product/${props.id}`);
-            console.log(res)
-            setProduct(res);
-        })();
-    }, []);
-
+    
+    const product = data;
     return (
         <Link href={`/product/${props.id}`} passHref>
             <a className="cursor-pointer">
