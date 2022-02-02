@@ -15,7 +15,7 @@ export default function FrontCategories(props: CategoryProps){
     const [pictures, setPictures] = useState<Picture[]>()
     useEffect(() => {
         getPictures()
-    }, [1 === 1])
+    }, [])
     
     function getPictures(){
         api.get<{ version: { pictures: Picture[] } [] } []>(`/product?filter=categories=${props.name}&projection=version.pictures`).then((res) => {

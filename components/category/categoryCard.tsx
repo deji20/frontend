@@ -10,9 +10,7 @@ export default function CategoryCard(props: {category: string}){
 
     return (
             <div>
-                <Link href={`/product/category/${props.category}`} passHref>
-                    <FrontCategories className='h-[25rem] w-80 m-5' name={props.category}/>
-                </Link>
+                <FrontCategories className='h-[25rem] w-80 m-5' href={`/product/category/${props.category}`} name={props.category}/>
             </div>
     )
     /*
