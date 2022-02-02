@@ -22,9 +22,10 @@ export default function Image(props: ImageProps){
     let image;
     if(props.pictures && props.pictures?.length > 0){
         if(typeof props.pictures[imageNr] === "string"){
+            const img = props.pictures[imageNr] as string
             image = (
                 <NextImage unoptimized={true} 
-                    src={props.pictures[imageNr]} 
+                    src={img} 
                     alt={"icon"} 
                     className={"place-self-center max-h-full"} 
                     width={1} height={1} layout="responsive" 
@@ -32,10 +33,11 @@ export default function Image(props: ImageProps){
                     onClick={props.onClick}/>
                     )}
         else {
+            const img = props.pictures[imageNr] as Picture
             image = (
                 <NextImage unoptimized={true} 
-                    src={props.pictures[imageNr].path} 
-                    alt={props.pictures[imageNr].alt} 
+                    src={img.path} 
+                    alt={img.alt} 
                     className={"place-self-center max-h-full"} 
                     width={1} height={1} layout="responsive" 
                     onError={fallBack} onClick={props.onClick}/>
