@@ -1,18 +1,9 @@
 import { NextPage } from 'next'
-import Head from 'next/head'
 import Image from 'next/image'
-import Link from 'next/link'
-import NavigationBar from '../components/navigation/navigationBar'
-import ProductList from '../components/products/productList'
-import HeroImage from '../components/heroImage'
 import ProductHero from '../components/products/productHero'
-import Cart from '../components/cart/cart'
-import List from '../components/list'
 import ProductGridList from '../components/products/productGridList'
-import axios from 'axios'
 import { ProductModel } from '../models/models'
 import { ReactNode } from 'react'
-import FrontCategories from '../components/frontCategories'
 import api from '../api'
 
 const PUBLIC_API = process.env.NEXT_PUBLIC_API;
@@ -25,7 +16,7 @@ type HomeProps = {
   children?: ReactNode
 }
 
-const Home: NextPage<HomeProps, HomeState> = (props: HomeProps) => {
+const Home: NextPage<HomeProps> = (props: HomeProps) => {
 
   return (
     <div className="min-h-screen bg-gray-800">

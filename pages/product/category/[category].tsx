@@ -5,6 +5,7 @@ import ProductGrid from '../../../components/products/productGrid'
 import { ProductModel } from '../../../models/models'
 import { ReactNode } from 'react'
 import Head from 'next/head';
+import api from '../../../api'
 
 type CategoryProps = {
   category: string;
@@ -36,8 +37,8 @@ const CategoryPage: NextPage<CategoryProps> = (props: CategoryProps) => {
 export default CategoryPage
 
 export async function getStaticProps(props: { params: { category: string } }){
-  let result = await axios.get<ProductModel[]>(API + "/product?filter=categories="+props.params.category);
-  let products = result.data;
+  let result = await api.get<ProductModel[]>("/product?filter=categories="+props.params.category);
+  let products = result;
   return {
     props:{
       category: props.params.category,
@@ -47,8 +48,8 @@ export async function getStaticProps(props: { params: { category: string } }){
 }
 
 export async function getStaticPaths(){
-    let result = await axios.get<string[]>(API + "/product/categories");
-    const categories: string[] = result.data;
+    let result = await api.get<string[]>("/product/categories");
+    const categories: string[] = result;
     let paths = categories.map(category =>  { 
         return { 
             params: {
