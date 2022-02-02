@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-gradient-noise-r {
+  background: 
+    linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-stops)), 
+    url(https://grainy-gradients.vercel.app/noise.svg);
+  filter: contrast(170%) brightness(1000%);  
+}
+.bg-gradient-noise-l {
+  background: 
+    linear-gradient(to left, var(--tw-gradient-from), var(--tw-gradient-stops)), 
+    url(https://grainy-gradients.vercel.app/noise.svg);
+  filter: contrast(170%) brightness(1000%);  
+}
+.bg-gradient-noise-t {
+  background: 
+    linear-gradient(to top, var(--tw-gradient-from), var(--tw-gradient-stops)), 
+    url(https://grainy-gradients.vercel.app/noise.svg);
+  filter: contrast(170%) brightness(1000%);  
+}
+.bg-gradient-noise-b {
+  background: 
+    linear-gradient(to bottom, var(--tw-gradient-from), var(--tw-gradient-stops)), 
+    url(https://grainy-gradients.vercel.app/noise.svg);
+  filter: contrast(170%) brightness(1000%);  
+}
