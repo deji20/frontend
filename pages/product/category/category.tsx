@@ -13,9 +13,6 @@ type CategoryProps = {
   children?: ReactNode, 
 }
 
-const PUBLIC_API = process.env.NEXT_PUBLIC_API;
-const API = process.env.DATABASE_API;
-
 const CategoryPage: NextPage<CategoryProps> = (props: CategoryProps) => {
   return (
       <div className="w-screen min-h-screen flex flex-col justify-center py-10 bg-gray-800">
@@ -36,7 +33,7 @@ const CategoryPage: NextPage<CategoryProps> = (props: CategoryProps) => {
 }
 export default CategoryPage
 
-export async function getStaticProps(props: { params: { category: string } }){
+export async function getServerSideProps(props: { params: { category: string } }){
   let result = await api.get<ProductModel[]>("/product?filter=categories="+props.params.category);
   let products = result;
   return {
@@ -45,21 +42,4 @@ export async function getStaticProps(props: { params: { category: string } }){
       products: products
     }
   }
-}
-
-export async function getStaticPaths(){
-    let result = await api.get<string[]>("/product/categories");
-    const categories: string[] = result;
-    let paths = categories.map(category =>  { 
-        return { 
-            params: {
-                category: category,
-            },
-        }
-    });
-
-    return {
-        paths,
-        fallback:false
-    }
 }

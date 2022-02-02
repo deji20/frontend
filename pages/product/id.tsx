@@ -5,14 +5,12 @@ import ProductDetail from '../../components/products/productDetail'
 import { ProductModel } from '../../models/models'
 import { ReactNode } from 'react'
 import Head from 'next/head'
+import api from '../../api'
 
 type ProductProps = {
   product: ProductModel,
   children?: ReactNode, 
 }
-
-const PUBLIC_API = process.env.NEXT_PUBLIC_API;
-const API = process.env.DATABASE_API;
 
 const ProductPage: NextPage<ProductProps> = (props: ProductProps) => {
   return (
@@ -29,29 +27,12 @@ const ProductPage: NextPage<ProductProps> = (props: ProductProps) => {
 }
 export default ProductPage
 
-export async function getStaticProps(props: { params: { id: string } }){
-  let result = await axios.get<ProductModel>(API + "/product/"+props.params.id);
-  let product = result.data;
+export async function getServerSideProps(props: { params: { id: string } }){
+  let result = await api.get<ProductModel>("/product/"+props.params.id);
+  let product = result;
   return {
     props:{
       product: product
     }
-  }
-}
-
-export async function getStaticPaths(id: string){
-  let result = await axios.get<ProductModel[]>(API + "/product");
-  const products: ProductModel[] = result.data;
-  let paths = products.map(product =>  { 
-    return { 
-      params: {
-        id: product._id?.toString(),
-      },
-    }
-  });
-
-  return {
-    paths,
-    fallback:false
   }
 }

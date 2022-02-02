@@ -37,7 +37,7 @@ const MainCategoryPage: NextPage<CategoryProps> = (props: CategoryProps) => {
 }
 export default MainCategoryPage
 
-export async function getStaticProps(props: { params: { category: string } }){
+export async function getServerSideProps(props: { params: { category: string } }){
   let result = await api.get<ProductModel[]>(`/product/categories?search=categories=${props.params.category}`);
   return {
     props:{
@@ -45,21 +45,4 @@ export async function getStaticProps(props: { params: { category: string } }){
       products: result
     }
   }
-}
-
-export async function getStaticPaths(){
-    let result = await api.get<string[]>("/product/categories");
-    const categories: string[] = result;
-    let paths = categories.map(category =>  { 
-        return { 
-            params: {
-                category: category,
-            },
-        }
-    });
-
-    return {
-        paths,
-        fallback:false
-    }
 }

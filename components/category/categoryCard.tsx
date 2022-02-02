@@ -1,9 +1,3 @@
-import { Component, ReactElement } from "react";
-import Img from "../image";
-import Link from "next/link";
-import { ProductModel } from "../../models/models";
-import OffsetButton from "../utilityComponent/offsetButton";
-import CategoryPage from "../../pages/product/category/[category]";
 import FrontCategories from "../frontCategories";
 
 export default function CategoryCard(props: {category: string}){  
