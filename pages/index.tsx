@@ -19,7 +19,7 @@ type HomeProps = {
 const Home: NextPage<HomeProps> = (props: HomeProps) => {
 
   return (
-    <div className="min-h-screen bg-gray-800">
+    <div className="min-h-screen bg-gray-800 overflow-hidden">
       <div className="absolute w-full h-full opacity-50">
         <Image src="/assets/" alt="" layout="fill"/>
       </div>
@@ -48,8 +48,8 @@ export async function getServerSideProps(){
         categoryProducts: categoryProducts,
       }
     }
-  }catch(err){
-    console.log(err);
+  }catch(err: any){
+    console.log(err.response.status);
     return {
       props: {}
     }

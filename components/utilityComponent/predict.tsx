@@ -60,7 +60,7 @@ export default function PredictInput(props: PredictProps){
                 {dropdown}
             </div>
             <div className="relative w-full z-50">
-                <ul className="absolute w-full max-h-80 overflow-scroll">
+                <ul className="absolute w-full max-h-80 overflow-y-auto overflow-x-hidden">
                     {visible && results.map((res, i) => {
                         return (
                             <li key={i} className="text-white text-bold tracking-widest cursor-pointer transition-all duration-200 hover:scale-x-[99%]" 

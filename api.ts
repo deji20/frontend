@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 
 const PUBLIC_API = process.env.NEXT_PUBLIC_API;
-const API = process.env.DATABASE_API;
+const API = process.env.NEXT_API;
 
 class Api{
     api: AxiosInstance;
@@ -11,8 +11,14 @@ class Api{
     }
 
     async get<Model>(url: string){
-        let res = await this.api.get<Model>(`${url}`);
-        return res.data;
+        try{
+            console.log(url);
+            let res = await (await this.api.get<Model>(`${url}`)).data;
+            return res
+        }catch(err){
+            console.log("what is this error!?", err)
+            throw err;
+        }
     }
     async post<Model>(url: string, data: Model, options: AxiosRequestConfig = {}){
         let res = await this.api.post(`${url}`, data, options)

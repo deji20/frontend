@@ -18,7 +18,7 @@ export default function SideBar(props: SideBarProps){
                 <Link href="/about" passHref>
                     <a><button className="w-full text-center p-2 bg-opacity-10 shadow-2xl transition-all duration-100 hover:bg-blue-800 font-thin tracking-wider">About Us</button></a>
                 </Link>
-                <Link href="/about" passHref>
+                <Link href="/contact" passHref>
                     <a><button className="w-full text-center p-2 bg-opacity-10 shadow-2xl transition-all duration-100 hover:bg-blue-800 font-thin tracking-wider">Contact</button></a>
                 </Link>
             </li>

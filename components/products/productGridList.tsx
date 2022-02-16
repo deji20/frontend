@@ -8,8 +8,6 @@ import Link from "next/link";
 import api from "../../api";
 import useSWR from "swr";
 
-const PUBLIC_API = process.env.NEXT_PUBLIC_API;
-
 type CategoryGridProps = {
     categories: string[];
     categoryProducts: ProductModel[];
@@ -32,12 +30,12 @@ export default function ProductCategoriesGrid(props: CategoryGridProps){
                 <ProductGrid products={products || []} />
             </div>
             <div className="bg-gray-900 mx-auto pb-5 justify-center flex">
-            <Link passHref href={`/product/category/${category}`} >
-                <div className="shadow-2xl rounded-2xl p-1 px-3 text-white text-center bg-blue-400 bg-opacity-30 cursor-pointer">
-                    <span className="font-light">Show More</span>
-                </div>
-            </Link>
-      </div>
+                <Link passHref href={`/product/category/${category}`} >
+                    <div className="shadow-2xl rounded-2xl p-1 px-3 text-white text-center bg-blue-400 bg-opacity-30 cursor-pointer">
+                        <span className="font-light">Show More</span>
+                    </div>
+                </Link>
+            </div>
         </div>
     )
 }

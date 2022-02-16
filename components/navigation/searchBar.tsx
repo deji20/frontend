@@ -19,7 +19,7 @@ export default function SearchBar(props: SearchBarProps){
                 return (
                     <Link href={`/product/${result._id}`} passHref>
                         <a>
-                            <div className="grid grid-cols-12 place-items-center p-1 border-b font-thin border-gray-500 bg-gray-800">
+                            <div className="grid grid-cols-12 place-items-center p-1 border-b font-thin border-gray-500 bg-gray-800 overflow-x-hidden">
                                 <div className="col-span-1 w-full">
                                     <div className="max-w-[3rem]">
                                         <Img className="w-full h-full" pictures={result.version[0].pictures}/>

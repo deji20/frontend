@@ -28,7 +28,9 @@ const ProductPage: NextPage<ProductProps> = (props: ProductProps) => {
 export default ProductPage
 
 export async function getServerSideProps(props: { params: { id: string } }){
+  console.log("just the goddamn props: ",props.params.id);
   let result = await api.get<ProductModel>("/product/"+props.params.id);
+  console.log(result);
   let product = result;
   return {
     props:{

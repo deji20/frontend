@@ -17,7 +17,7 @@ export default function List(props: ListProps){
     const [selected, changeSelected] = useState(props.selected);
 
     return(
-        <ul className="grid grid-flow-col shadow-xl text-gray-200 bg-gray-900 bg-opacity-50 overflow-y overflow-x-scroll z-40" >
+        <ul className="grid grid-flow-col shadow-xl text-gray-200 bg-gray-900 bg-opacity-50 overflow-y-hidden overflow-x-auto z-40" >
             {props.headers.map((header) => {
                 return (
                     <li className="flex-grow min-w-[5rem] text-center border border-white hover:border-opacity-60 border-opacity-5 cursor-pointer tracking-wider transform duration-300" 
