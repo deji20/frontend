@@ -50,7 +50,7 @@ const Contact: NextPage = () => {
 
                 <div className='place-self-end text-white'>
                     <button>
-                        <input className='p-2 px-10 bg-gray-900 rounded-tl-2xl rounded-br-lg cursor-pointer hover:bg-gray-800' type="submit" value="Send"/>
+                        <input className='p-2 px-10 bg-gray-800 rounded-tl-2xl rounded-br-lg cursor-pointer hover:bg-gray-600' type="submit" value="Send"/>
                     </button>
                 </div>
             </form>
