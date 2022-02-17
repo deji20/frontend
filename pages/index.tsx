@@ -22,8 +22,8 @@ const Home: NextPage<HomeProps> = (props: HomeProps) => {
       <div className="absolute w-full h-full opacity-50">
         <Image src="/assets/" alt="" layout="fill"/>
       </div>
-      <div className='pt-10 w-screen'>
-        <div className='bg-white rounded-b-lg font-extralight text-gray-400 py-1 mx-2 px-4 text-sm bg-opacity-10 h-full'>
+      <div className='pt-10 px-2 w-screen'>
+        <div className='bg-white rounded-b-lg font-extralight text-gray-400 py-1 px-4 text-sm bg-opacity-10 h-full'>
           <p className="px-4">Vi er en indisk familie som gennem 26 år har dannet erfaringerer med handling og salg mellem indien og den vestlige verden. Vi tager bestilliger til store ordre, kom med foto eller prototype, vi giver garanti, og varende, og garantere returningers muligeheder</p>
         </div>
       </div>
