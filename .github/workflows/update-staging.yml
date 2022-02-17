@@ -16,7 +16,7 @@ jobs:
         run: sudo apt-get install -f
       - uses: actions/checkout@v2
       - name: Adding Environment Variables
-        run: echo ${{env.ENVIRONMENT}} > .env.local
+        run: echo "${{secrets.ENVIRONMENT}}" > .env.local
         shell: bash
       - name: Creating image
         run: docker build -t ${{ env.image }} .
