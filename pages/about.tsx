@@ -10,7 +10,7 @@ const About: NextPage = () => {
           </div>
 
           <div className="w-full h-full p-10 flex align-middle justify-center bg-gray-600">
-            <div className="shadow-2xl rounded border p-4 font-extralight text-sm text-white">
+            <div className="shadow-2xl rounded border p-4 font-extralight text-sm text-white flex h-min place-self-center">
               <p> 
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dolor odio, feugiat non dapibus vel, rhoncus efficitur odio. Vestibulum ac sem a libero cursus pulvinar. Aliquam sed leo leo. Integer sed faucibus nulla. Nam neque dui, semper nec leo eu, imperdiet ultricies nulla. Donec sagittis efficitur metus, non scelerisque ipsum laoreet vel. Integer quis nibh sit amet lacus molestie luctus a in lectus. Aliquam consequat elit in massa porta ultricies. Suspendisse potenti.
                 Mauris sodales eu nibh at consequat. Aliquam tempus mauris non pellentesque feugiat. Pellentesque ut porttitor augue. Morbi fermentum nulla ut arcu congue, id auctor magna hendrerit. Donec sodales vel neque id viverra. Aenean eu vehicula ante. Donec et malesuada enim. Mauris ultricies nisi vitae enim faucibus, gravida vehicula nisi tincidunt. Aliquam erat volutpat.
