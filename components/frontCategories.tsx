@@ -19,7 +19,7 @@ async function getPictures (category: string){
 }
 
 export default function FrontCategories(props: CategoryProps){
-    const {data: pictures, error} = useSWR<Picture[]>(getPictures)
+    const {data: pictures, error} = useSWR<Picture[]>(props.name, getPictures)
 
     return(
         <Link href={props.href} passHref>

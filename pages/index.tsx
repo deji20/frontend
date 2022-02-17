@@ -12,7 +12,6 @@ const API = process.env.DATABASE_API;
 type HomeProps = {
   products: ProductModel[], 
   categories: string[], 
-  categoryProducts: ProductModel[],
   children?: ReactNode
 }
 
@@ -29,7 +28,7 @@ const Home: NextPage<HomeProps> = (props: HomeProps) => {
         </div>
       </div>
       <ProductHero/>
-      <ProductGridList className="bg-gray-900 max-h-screen" categories={props.categories} categoryProducts={props.categoryProducts}  />
+      <ProductGridList className="bg-gray-900 max-h-screen" categories={props.categories} />
     </div>
   )
 }
@@ -39,13 +38,11 @@ export async function getServerSideProps(){
   try{
     let categories = await api.get<string[]>("/product/categories");
     let products = await api.get<ProductModel[]>("/product");
-    let categoryProducts = await api.get<ProductModel[]>("/product?filter=categories=" + categories[0] );
     
     return {
       props: {
         products: products,
         categories: categories,
-        categoryProducts: categoryProducts,
       }
     }
   }catch(err: any){

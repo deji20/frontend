@@ -9,9 +9,9 @@ interface GridProps{
 }
 
 export default function ProductGrid(props: GridProps){
-        let productSquares = props.products?.map(product => {
+        let productSquares = props.products?.map((product, index) => {
                 return (
-                        <Link key={product._id} href={"/product/" + product._id} passHref> 
+                        <Link key={index} href={"/product/" + product._id} passHref> 
                                 <Product product={product}/> 
                         </Link>
                 )

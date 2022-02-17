@@ -10,16 +10,17 @@ import useSWR from "swr";
 
 type CategoryGridProps = {
     categories: string[];
-    categoryProducts: ProductModel[];
     className?: string;
 }
 
 export default function ProductCategoriesGrid(props: CategoryGridProps){
     const [category, setCategory] = useState(props.categories[0]);
-    const {data, error} = useSWR<ProductModel[]>(category, getProductsByCategory);
-
-    const products = data;
+    const {data: products, error} = useSWR<ProductModel[]>(category, getProductsByCategory);
     
+    if(error) return <p>{error.toString()}</p>
+    if(!products) return <p>Loading</p> 
+
+
     return (
         <div className={props.className}>
             <List headers={props.categories} onChange={async (selected, event) => {
@@ -41,6 +42,8 @@ export default function ProductCategoriesGrid(props: CategoryGridProps){
 }
 
 let getProductsByCategory = async (category: string) => {
+    console.log("category",category)
     let products = await api.get<ProductModel[]>(`/product?filter=categories=${category}`);
+    console.log(products)
     return products;
 }
