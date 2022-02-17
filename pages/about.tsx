@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 
 const About: NextPage = () => {
     return (
-      <div className="flex justify-center bg-gray-900 min-h-screen">
+      <div className="flex justify-center bg-gray-900 min-h-screen p-20">
         <div className="w-1/2 flex flex-row bg-gray-700 rounded-lg drop-shadow-2xl hover:drop-shadow-none">
 
           <div className="w-full h-full p-10 flex align-middle justify-center">

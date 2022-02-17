@@ -42,8 +42,6 @@ export default function ProductCategoriesGrid(props: CategoryGridProps){
 }
 
 let getProductsByCategory = async (category: string) => {
-    console.log("category",category)
     let products = await api.get<ProductModel[]>(`/product?filter=categories=${category}`);
-    console.log(products)
     return products;
 }

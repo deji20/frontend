@@ -6,7 +6,6 @@ import { ProductModel } from "../../models/models";
 import OffsetButton from "../utilityComponent/offsetButton";
 
 export default function Product(props: {product: ProductModel}){
-    console.log(props.product)
     let version = props.product?.version[0] || undefined;
     
     return (
