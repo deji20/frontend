@@ -1,13 +1,11 @@
 class config{
-    publicApi: string;
     api: string;
     port: number;
 
 
     constructor(){
-        this.publicApi = "http://indiskehjørne.dk/api";
-        this.api = "http://api";
-        this.port = parseInt("80");
+        this.api = process.env.NEXT_API || process.env.NEXT_PUBLIC_API;
+        this.port = process.env.PORT;
     }
 }
 

@@ -1,13 +1,11 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-
-const PUBLIC_API = process.env.NEXT_PUBLIC_API;
-const API = process.env.NEXT_API;
+import config from './config';
 
 class Api{
     api: AxiosInstance;
     
     constructor(){
-        this.api = axios.create({baseURL: API || PUBLIC_API})
+        this.api = axios.create({baseURL: config.api})
     }
 
     async get<Model>(url: string){
