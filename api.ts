@@ -12,7 +12,7 @@ class Api{
 
     async get<Model>(url: string){
         try{
-            console.log(this.api, url);
+            console.log(this.api.defaults.baseURL, url);
             let res = await (await this.api.get<Model>(`${url}`)).data;
             return res
         }catch(err){
