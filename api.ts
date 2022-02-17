@@ -10,7 +10,9 @@ class Api{
 
     async get<Model>(url: string){
         try{
-            console.log(config.api);
+            console.log("hidden", process.env.API);
+            console.log("public", process.env.NEXT_PUBLIC_API)
+            console.log("config", config.api);
             console.log(this.api.defaults.baseURL, url);
             let res = await (await this.api.get<Model>(`${url}`)).data;
             return res
