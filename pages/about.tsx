@@ -3,13 +3,13 @@ import { NextPage } from 'next'
 const About: NextPage = () => {
     return (
       <div className="flex justify-center bg-gray-900 min-h-screen p-20">
-        <div className="w-2/3 flex flex-row bg-gray-700 rounded-lg drop-shadow-2xl hover:drop-shadow-none">
+        <div className="w-2/3 flex flex-row rounded-lg drop-shadow-2xl hover:drop-shadow-none">
 
           <div className="w-full h-full p-10 flex align-middle justify-center">
             <div className="shadow-2xl rounded border flex flex-grow"></div>
           </div>
 
-          <div className="w-full h-full p-10 flex align-middle justify-center bg-gray-600">
+          <div className="w-full h-full p-10 flex align-middle justify-center">
             <div className="shadow-2xl rounded border p-4 font-extralight text-sm text-white flex h-min place-self-center">
               <p> 
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dolor odio, feugiat non dapibus vel, rhoncus efficitur odio. Vestibulum ac sem a libero cursus pulvinar. Aliquam sed leo leo. Integer sed faucibus nulla. Nam neque dui, semper nec leo eu, imperdiet ultricies nulla. Donec sagittis efficitur metus, non scelerisque ipsum laoreet vel. Integer quis nibh sit amet lacus molestie luctus a in lectus. Aliquam consequat elit in massa porta ultricies. Suspendisse potenti.
