@@ -15,16 +15,19 @@ type CategoryGridProps = {
 
 export default function ProductCategoriesGrid(props: CategoryGridProps){
     const [category, setCategory] = useState(props.categories[0]);
-    const {data: products, error} = useSWR<ProductModel[]>(category, getProductsByCategory);
-    
-    if(error) return <p>{error.toString()}</p>
-    if(!products) return <p>Loading</p> 
+    const [products, setProducts] = useState<ProductModel[]>([])
 
+    useEffect(() => {
+        getProductsByCategory(category).then(res => setProducts(res));
+    }, [category]) 
 
     return (
         <div className={props.className}>
             <List headers={props.categories} onChange={async (selected, event) => {
                 setCategory(selected);
+                api.get<ProductModel[]>(`/product?filter=categories=${selected}`).then(res => {
+                    
+                });
             }} 
             selected={props.categories[0]}/>
             <div className="px-10">
