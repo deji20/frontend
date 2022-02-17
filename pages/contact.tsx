@@ -22,7 +22,7 @@ const Contact: NextPage = () => {
             <title>Contact</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
-        <div className="w-1/2 max-w-screen-sm m-20 h-min relative bg-gray-700 rounded-lg drop-shadow-2xl hover:drop-shadow-none">
+        <div className="w-2/3 max-w-screen-sm m-20 h-min relative place-self-center rounded-lg drop-shadow-2xl hover:drop-shadow-none">
             <form method='POST' onSubmit={submit} className="flex flex-col flex-grow h-full justify-between">
                 <div className='flex flex-col m-4 p-4 rounded shadow-2xl bg-white bg-opacity-10'>
                     <div className='flex flex-row'>
