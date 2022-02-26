@@ -5,18 +5,24 @@ import ProductGridList from '../components/products/productGridList'
 import { ProductModel } from '../models/models'
 import { ReactNode } from 'react'
 import api from '../api'
+import useSWR from 'swr'
 
 const PUBLIC_API = process.env.NEXT_PUBLIC_API;
 const API = process.env.DATABASE_API;
 
 type HomeProps = {
-  products: ProductModel[], 
   categories: string[], 
   children?: ReactNode
 }
 
 const Home: NextPage<HomeProps> = (props: HomeProps) => {
+  const {data: categories, error} = useSWR<string[]>("/product/categories", (path) => api.get(path))
 
+  if(error) return <p>error</p>
+  if(!categories && !error) return <p>loading</p>
+
+  api.get("/product/categories").then(res => console.log(res));
+  console.log(props)
   return (
     <div className="min-h-screen bg-gray-800 overflow-hidden">
       <div className="absolute w-full h-full opacity-50">
@@ -28,7 +34,7 @@ const Home: NextPage<HomeProps> = (props: HomeProps) => {
         </div>
       </div>
       <ProductHero/>
-      <ProductGridList className="bg-gray-900 max-h-screen" categories={props.categories} />
+      {categories && <ProductGridList className="bg-gray-900 max-h-screen" categories={categories} />}
     </div>
   )
 }
@@ -37,11 +43,9 @@ export default Home
 export async function getServerSideProps(){
   try{
     let categories = await api.get<string[]>("/product/categories");
-    let products = await api.get<ProductModel[]>("/product");
-    
+    console.log("categories", categories);
     return {
       props: {
-        products: products,
         categories: categories,
       }
     }

@@ -6,6 +6,7 @@ import { ProductModel } from '../../../models/models'
 import { ReactNode } from 'react'
 import Head from 'next/head';
 import api from '../../../api'
+import useSWR from 'swr'
 
 type CategoryProps = {
   category: string;
@@ -14,6 +15,7 @@ type CategoryProps = {
 }
 
 const CategoryPage: NextPage<CategoryProps> = (props: CategoryProps) => {
+  api.get<ProductModel[]>(`/product?filter=categories=${"Screenshot"}`).then(res => console.log(res)).catch(err => console.log(err));
   return (
       <div className="w-screen min-h-screen flex flex-col justify-center py-10 bg-gray-800">
         <Head>
@@ -34,8 +36,9 @@ const CategoryPage: NextPage<CategoryProps> = (props: CategoryProps) => {
 export default CategoryPage
 
 export async function getServerSideProps(props: { params: { category: string } }){
-  let result = await api.get<ProductModel[]>("/product?filter=categories="+props.params.category);
-  let products = result;
+  let products: ProductModel[] = [];
+  products = await api.get<ProductModel[]>(`/product?filter=categories=${props.params.category}`);
+  console.log(props.params.category);
   return {
     props:{
       category: props.params.category,

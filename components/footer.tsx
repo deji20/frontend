@@ -2,9 +2,9 @@ import Img from "./image";
 
 export default function Footer(){
     return (
-        <div className='bg-gray-700 text-[0.6rem] w-full p-2 grid grid-cols-2 place-items-center text-white font-thin tracking-wider'>
+        <div className='bg-gray-700 text-[0.8rem] w-full p-2 grid grid-cols-2 place-items-center text-white font-light tracking-wider'>
             <ul className=''>
-                <li>Phone: </li>
+                <li>Phone: +4571360354</li>
                 <li>Email: </li>
                 <li>Fax: </li>
             </ul>

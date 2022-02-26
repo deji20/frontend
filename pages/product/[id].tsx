@@ -10,9 +10,13 @@ import api from '../../api'
 type ProductProps = {
   product: ProductModel,
   children?: ReactNode, 
+  params: {
+    id:string
+  }
 }
 
 const ProductPage: NextPage<ProductProps> = (props: ProductProps) => {
+  
   return (
     <div>
       <Head>
@@ -27,12 +31,29 @@ const ProductPage: NextPage<ProductProps> = (props: ProductProps) => {
 }
 export default ProductPage
 
-export async function getServerSideProps(props: { params: { id: string } }){
-  let result = await api.get<ProductModel>("/product/"+props.params.id);
-  let product = result;
+export async function getStaticPaths(){
+  let products = await api.get<string[]>(`/product?projection=_id`);
+  console.log("\n\n\n\n\n"+products);
+  const paths = products.map((prod) => ({
+    params: { id: prod },
+  })) 
+  return {paths, fallback: "blocking"};
+}
+
+export async function getStaticProps(props: {params: {id: string}}){
+  let product = await api.get<ProductModel>("/product/"+props.params.id);
   return {
     props:{
       product: product
     }
   }
 }
+
+/*export async function getServerSideProps(props: { params: { id: string } }){
+  let product = await api.get<ProductModel>("/product/"+props.params.id);
+  return {
+    props:{
+      product: product
+    }
+  }
+}*/

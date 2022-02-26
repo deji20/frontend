@@ -58,7 +58,7 @@ export default function Image(props: ImageProps){
             <div className={`absolute bottom-3 w-full flex flex-row justify-center`}>
                 {props.multiple && props.pictures && props.pictures.length > 1 && props.pictures.map((image, i) => {
                     return (
-                        <div key={i} className="z-10 mix-blend-difference h-3 w-3 drop-shadow-2xl border mx-1 rounded-full bg-opacity-50 bg-blue-800 hover:bg-opacity-100" 
+                        <div key={i} className="z-10 mix-blend-difference h-3 w-3 drop-shadow-2xl mx-1 rounded-full bg-opacity-50 bg-blue-800 hover:bg-opacity-100" 
                             onClick={(e) => {
                                 e.preventDefault()
                                 setImage(i);

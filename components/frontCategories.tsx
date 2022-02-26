@@ -26,7 +26,7 @@ export default function FrontCategories(props: CategoryProps){
             <a>
                 <div className={`relative rounded cursor-pointer flex flex-row bg-gray-600 shadow-2xl ${props.className}`} >
                         <div className="z-50 absolute top-1/2 w-full flex justify-center">
-                            <div className="w-full bg-black bg-opacity-50 p-1 mx-2">
+                            <div className="w-full bg-black bg-opacity-50 p-1 mx-4 rounded-lg shadow-2xl">
                                 <h1 className="text-center capitalize font-thin text-white text-3xl tracking-widest w-full">
                                     {props.name}
                                 </h1>
@@ -40,8 +40,8 @@ export default function FrontCategories(props: CategoryProps){
                                 <Img className="border rounded" pictures={pictures} />
                             </div>
                         </div>
-                        <div className="w-full place-self-center">
-                            <Img className="border rounded" pictures={pictures} />
+                        <div className="w-full scale-95 place-self-center">
+                            <Img className="rounded" pictures={pictures} />
                         </div>
                     </div>
             </a>

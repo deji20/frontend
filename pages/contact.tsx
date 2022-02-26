@@ -29,7 +29,9 @@ const Contact: NextPage = () => {
                         <div className='flex flex-col flex-shrink text-white mr-1'>
                             <label>Type:</label>
                             <select name="type" className='mb-3 border border-gray-700 rounded p-1 px-2 bg-gray-500 focus:bg-gray-400'>
-                                <option value={"Complaint"}>Complaint</option>
+                                <option value={"Klage"}>Klage</option>
+                                <option value={"Retur"}>Retur</option>
+                                <option value={"Whole Sale"}>Whole Sale</option>
                             </select>
                         </div>
                         <div className='flex flex-col flex-grow text-white w-full'>

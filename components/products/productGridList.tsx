@@ -13,9 +13,11 @@ type CategoryGridProps = {
     className?: string;
 }
 
-export default function ProductCategoriesGrid(props: CategoryGridProps){
-    const [category, setCategory] = useState(props.categories[0]);
+export default function ProductGridList(props: CategoryGridProps){
+    const [category, setCategory] = useState<string>(props.categories?.[0]);
     const [products, setProducts] = useState<ProductModel[]>([])
+
+    console.log(category);
 
     useEffect(() => {
         getProductsByCategory(category).then(res => setProducts(res));
@@ -23,13 +25,13 @@ export default function ProductCategoriesGrid(props: CategoryGridProps){
 
     return (
         <div className={props.className}>
-            <List headers={props.categories} onChange={async (selected, event) => {
+            <List headers={props.categories || []} onChange={async (selected, event) => {
                 setCategory(selected);
                 api.get<ProductModel[]>(`/product?filter=categories=${selected}`).then(res => {
                     
                 });
             }} 
-            selected={props.categories[0]}/>
+            selected={props.categories?.[0]}/>
             <div className="px-10">
                 <ProductGrid products={products || []} />
             </div>
