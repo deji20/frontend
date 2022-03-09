@@ -6,6 +6,8 @@ import { ProductModel } from '../models/models'
 import { ReactNode } from 'react'
 import api from '../api'
 import useSWR from 'swr'
+import Error from '../components/fallback/error'
+import Loading from '../components/fallback/loading'
 
 const PUBLIC_API = process.env.NEXT_PUBLIC_API;
 const API = process.env.DATABASE_API;
@@ -18,8 +20,8 @@ type HomeProps = {
 const Home: NextPage<HomeProps> = (props: HomeProps) => {
   const {data: categories, error} = useSWR<string[]>("/product/categories", (path) => api.get(path))
 
-  if(error) return <p>error</p>
-  if(!categories && !error) return <p>loading</p>
+  if(error) return <Error className='min-h-screen'/>
+  if(!categories && !error) return <Loading className="min-h-screen"/>
 
   api.get("/product/categories").then(res => console.log(res));
   console.log(props)
