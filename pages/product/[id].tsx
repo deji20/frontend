@@ -35,7 +35,15 @@ const ProductPage: NextPage<ProductProps> = (props: ProductProps) => {
   )
 }
 export default ProductPage
-/*
+
+/*export async function getStaticPaths(){
+  let products = await api.get<{_id: string}[]>(`product?projection=_id`);
+  const paths = products.map((prod) => ({
+    params: { id: prod._id },
+  })) 
+  return {paths, fallback: true};
+}*/
+
 export async function getServerSideProps(props: {params: {id: string}}){
   let product = await api.get<ProductModel>("product/"+props.params.id);
   return {
@@ -44,31 +52,3 @@ export async function getServerSideProps(props: {params: {id: string}}){
     }
   }
 }
-*/
-
-export async function getStaticPaths(){
-  let products = await api.get<{_id: string}[]>(`product?projection=_id`);
-  console.log("\n\n\n\n\n", products);
-  const paths = products.map((prod) => ({
-    params: { id: prod._id },
-  })) 
-  return {paths, fallback: true};
-}
-
-export async function getStaticProps(props: {params: {id: string}}){
-  let product = await api.get<ProductModel>("product/"+props.params.id);
-  return {
-    props:{
-      product: product
-    }
-  }
-}
-
-/*export async function getServerSideProps(props: { params: { id: string } }){
-  let product = await api.get<ProductModel>("/product/"+props.params.id);
-  return {
-    props:{
-      product: product
-    }
-  }
-}*/

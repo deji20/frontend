@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import api from "../../api";
-import config from "../../config";
 import UseCheckout from "../../hooks/useCheckout";
-import useScript from "../../hooks/useScripts";
-import { getStaticProps } from "../../pages/product/[id]";
 import OffsetButton from "../utilityComponent/offsetButton";
 
 interface CheckoutProps{
