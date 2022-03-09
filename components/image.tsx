@@ -14,10 +14,6 @@ interface ImageProps{
 export default function Image(props: ImageProps){
     const [imageNr, setImage] = useState(0)
 
-    const fallBack = (img: any) => {
-        img.target.src = `/api/icons/blankImage.svg`;
-    }
-
     //changes image styling depending on if it uses the default blank image or not
     let image;
     if(props.pictures && props.pictures?.length > 0){
