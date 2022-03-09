@@ -1,7 +1,7 @@
 import { useState } from "react";
 import UseCookie from "react-use-cookie";
 import { CartModel } from "../../models/models";
-import  UseCart from "../../services/cartHook";
+import  UseCart from "../../hooks/cartHook";
 import OffsetButton from "../utilityComponent/offsetButton";
 
 export default function AddToCart(props: {id: string}){

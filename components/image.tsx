@@ -29,7 +29,6 @@ export default function Image(props: ImageProps){
                     alt={"icon"} 
                     className={"place-self-center max-h-full"} 
                     width={1} height={1} layout="responsive" 
-                    onError={fallBack} 
                     onClick={props.onClick}/>
                     )}
         else {
@@ -40,7 +39,7 @@ export default function Image(props: ImageProps){
                     alt={img.alt} 
                     className={"place-self-center max-h-full"} 
                     width={1} height={1} layout="responsive" 
-                    onError={fallBack} onClick={props.onClick}/>
+                    onClick={props.onClick}/>
             )}
     }
     else {

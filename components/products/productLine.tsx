@@ -5,7 +5,7 @@ import Img from "../image";
 import ProductHero from "./productHero";
 import Link from "next/link";
 import Pricetag from "../pricetag";
-import UseCart from "../../services/cartHook";
+import UseCart from "../../hooks/cartHook";
 import useSWR from "swr";
 
 interface ProductLineProps{
@@ -14,7 +14,7 @@ interface ProductLineProps{
 }
 
 export default function ProductLine( props: ProductLineProps ){
-    const {data, error} = useSWR<ProductModel>(`product/${props.id}`);
+    const {data, error} = useSWR<ProductModel>(`product/${props.id}`,(url) => api.get<ProductModel>(url));
     const [cart, setCart] = UseCart();
     
     const product = data;

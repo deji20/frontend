@@ -10,9 +10,12 @@ class Api{
 
     async get<Model>(url: string){
         console.log(config.api)
-        let res = await (await this.api.get<Model>(`${url}`)).data;
-        console.log(res);
-        return res
+        try{
+            let res = await (await this.api.get<Model>(`${url}`)).data;
+            return res
+        }catch(err: any){
+            throw new Error(err);
+        }
     }
     async post<Model>(url: string, data: Model, options: AxiosRequestConfig = {}){
         let res = await this.api.post(`${url}`, data, options)

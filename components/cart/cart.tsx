@@ -1,7 +1,7 @@
 import { Component } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import UseCart from "../../services/cartHook";
+import UseCart from "../../hooks/cartHook";
 
 export default function Cart(props: any){
     const [cart, setCart] = UseCart();
