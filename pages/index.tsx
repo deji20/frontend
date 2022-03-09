@@ -20,7 +20,7 @@ type HomeProps = {
 const Home: NextPage<HomeProps> = (props: HomeProps) => {
   const {data: categories, error} = useSWR<string[]>("/product/categories", (path) => api.get(path))
 
-  if(error) return <Error className='min-h-screen'/>
+  if(error) return <Error message={error} className='min-h-screen'/>
   if(!categories && !error) return <Loading className="min-h-screen"/>
 
   api.get("/product/categories").then(res => console.log(res));
