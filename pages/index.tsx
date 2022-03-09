@@ -22,9 +22,7 @@ const Home: NextPage<HomeProps> = (props: HomeProps) => {
 
   if(error) return <Error message={error} className='min-h-screen'/>
   if(!categories && !error) return <Loading className="min-h-screen"/>
-
-  api.get("/product/categories").then(res => console.log(res));
-  console.log(props)
+  
   return (
     <div className="min-h-screen bg-gray-800 overflow-hidden">
       <div className="absolute w-full h-full opacity-50">
