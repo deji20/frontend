@@ -20,7 +20,7 @@ export default function Cart(props: any){
     return(
         <Link passHref href="/cart">
                 <a>
-                <div className="z-50 fixed rounded-full p-10 bottom-0 left-5 flex items-center opacity-50 cursor-pointer transform duration-500 hover:scale-110 hover:opacity-100">
+                <div className="z-50 fixed rounded-full p-10 bottom-4 right-5 flex items-center opacity-50 cursor-pointer transform duration-500 hover:scale-110 hover:opacity-100">
                     {cartAmount}
                     <Image className="" src="/assets/cart.png" alt="Cart Icon" layout="fill"/>
                 </div>

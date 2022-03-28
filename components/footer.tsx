@@ -7,6 +7,7 @@ export default function Footer(){
                 <li>Phone: +4571360354</li>
                 <li>Email: </li>
                 <li>Fax: </li>
+                <li>Cvr: 39442663</li>
             </ul>
             <ul className='flex flex-row justify-evenly flex-grow align-middle w-full'>
                     <Img pictures={["/api/icons/social/insta.svg"]} className="w-8"/>

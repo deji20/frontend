@@ -39,7 +39,7 @@ export default function Dialog(props: DialogProps){
     });
 
     return (
-        <div onClick={close} className={(props.darken && "bg-black bg-opacity-50") + " fixed top-0 flex flex-col justify-center align-middle z-50  h-screen w-screen dialogClose"}>
+        <div onClick={close} className={(props.darken && "bg-black bg-opacity-50") + " fixed top-0 left-0 flex flex-col justify-center align-middle z-50  h-screen w-screen dialogClose"}>
             {dialog}
         </div>
     )
