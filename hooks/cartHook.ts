@@ -8,7 +8,7 @@ export default function UseCart(): [CartModel, (cart: CartModel) => void]{
     if(!cookie) setCookie('{"products":[]}');   
     const cart = JSON.parse(cookie);
     const [cartState, setCartState] = useState<CartModel>(cart)
-
+    
     const setCart = (cart: CartModel) => {
         setCookie(JSON.stringify(cart));
         setCartState(cart)

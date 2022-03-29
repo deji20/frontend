@@ -22,7 +22,7 @@ export default function CheckoutForm(props: FormProps){
 
     return (
         <form className={`flex flex-grow flex-col`}>
-            <h1 className="p-2 rounded-t tracking-wider font-light text-2xl text-white bg-white bg-opacity-50">Shipping Information</h1>
+            <h1 className="p-2 rounded-t tracking-wider font-light text-2xl text-white bg-white bg-opacity-25">Shipping Information</h1>
             <div className={props.className}>
                 <div className={`grid grid-cols-2 gap-2 `}>
                     <div className={wrapperClass}>

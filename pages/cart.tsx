@@ -1,15 +1,13 @@
 import { NextPage } from 'next'
-import axios from 'axios'
 import { ProductModel } from '../models/models'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import CheckoutButton from '../components/cart/checkoutButton'
 import UseCart from '../hooks/cartHook'
 import ProductLine from '../components/products/productLine'
 import api from '../api'
-import ProductDescription from '../components/products/productDescription'
-import Head from 'next/head'
-import useScript from '../hooks/useScripts';
-import {Helmet} from 'react-helmet';
+import CheckoutForm from '../components/cart/checkoutForm'
+import Summary from '../components/cart/summary'
+import useSWR from 'swr'
 
 type CartProps = {
   products: ProductModel[], 
@@ -18,22 +16,59 @@ type CartProps = {
   children?: ReactNode
 }
 
+
 const Cart: NextPage<CartProps> = (props: CartProps) => {
   const [cart, setCart] = UseCart();
+  const [step, setStep] = useState(0);
+  const { data: products, error } = useSWR("un", (key) => {
+    const prodCall = cart.products.map(async (product) => {
+      let res = await api.get<ProductModel>(`product/${product.id}`);
+      return {amount: product.amount, product:  res};
+    })
+    return Promise.all(prodCall); 
+  })
 
-  return (
-    <div className="flex justify-center p-20 bg-gray-900 min-h-screen">
+  const productOverview = () => {
+    return (
       <div className="w-1/2 max-w-screen-sm relative bg-gray-700 rounded-lg shadow-2xl hover:shadow-inner">
         <div className=''>
-          {cart.products.map((product, i) => {
-            return <ProductLine key={i} id={product.id} amount={product.amount}/>
+          {products?.map((line, i) => {
+            return <ProductLine key={i} product={line.product} amount={line.amount}/>
           })}
         </div>
         <CheckoutButton productIds={cart.products.map(prod => prod.id)} />
       </div>
-    </div>
-  )
+    )
+  }
+
+  const shippingInformation = () => {
+    return (
+      <div className='grid grid-cols-4 gap-x-10'>
+        <div className='col-span-2'>
+          <div className="flex justify-center">
+            <CheckoutForm className='p-5 shadow-2xl rounded-b bg-gray-600 h-min '/>
+          </div>
+        </div>
+        <div className='col-span-2'>
+          <div className='flex justify-center'>
+            <Summary className="rounded shadow-2xl" products={products || []}/>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="grid grid-rows-5 justify-center p-20 bg-gray-900">
+      <div className='rows-span-4'>
+        {shippingInformation()}
+      </div>
+      <div className='grid grid-cols-4 grid-rows-3 text-gray-300'>
+        <button className='bg-green-600 row-start-3 col-start-4 w-min text-gray-300 hover:text-white shadow-2xl hover:shadow-inner rounded-full px-10 h-10'>Next</button>
+      </div>
+    </div>)
 }
+
 export default Cart
 
 export async function getServerSideProps(){

@@ -9,8 +9,6 @@ class Api{
     }
 
     async get<Model>(url: string){
-        console.log("baseURL:", config.api);
-        console.log("path:", url);
         try{
             let res = await (await this.api.get<Model>(`${url}`)).data;
             return res
