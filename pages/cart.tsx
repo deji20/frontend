@@ -32,9 +32,9 @@ const Cart: NextPage<CartProps> = (props: CartProps) => {
   
 
   const orderSteps = [
-    <ProductOverview products={products || []}/>,
-    <ShippingInfo  products={products || []}/>,
-    <NetsCheckout order={{products: cart.products.map((product) => {
+    <ProductOverview key="1" products={products || []}/>,
+    <ShippingInfo  key="2" products={products || []}/>,
+    <NetsCheckout key="3" order={{products: cart.products.map((product) => {
       return {product: product.id, amount:product.amount}
     })}}/>
   ];
@@ -45,7 +45,11 @@ const Cart: NextPage<CartProps> = (props: CartProps) => {
         {
           orderSteps.map((o, i) => {
             return (
-              <div onClick={() => setStep(i)} className={`p-[6px] w-min rounded-full bg-white transition-all duration-500 bg-opacity-10 hover:bg-opacity-20 ${step == i ? "bg-opacity-50" : ""}`}></div>
+              <div 
+                key={i} 
+                onClick={() => setStep(i)} 
+                className={`p-[6px] w-min rounded-full bg-white transition-all duration-500 bg-opacity-10 hover:bg-opacity-20 ${step == i ? "bg-opacity-50" : ""}`}>
+              </div>
             )
           })
         }

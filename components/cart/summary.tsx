@@ -23,9 +23,9 @@ export default function Summary(props: SummaryProps){
                     </thead>
                     <tbody className="text-sm font-light text-gray-200 text-center">
                         {
-                        props.products.map((line) => {
+                        props.products.map((line, i) => {
                             return (
-                                    <tr className="border-b bg-black bg-opacity-50 border-white border-opacity-25 last:border-none">
+                                    <tr key={i} className="border-b bg-black bg-opacity-50 border-white border-opacity-25 last:border-none">
                                         <td>
                                             <a href={`/product/${line.product._id}`}>
                                                 <Image pictures={line.product.version[0].pictures}/>
