@@ -8,7 +8,7 @@ const About: NextPage = () => {
 
           <div className="w-full h-full p-10 flex align-middle justify-center">
             <div className="shadow-2xl rounded  flex flex-grow"></div>
-            <Image className="h-full w-full shadow-2xl" multiple pictures={["/api/about/1.jpg", "/api/about/2.jpg", "/api/about/3.jpg", "/api/about/4.jpg"]}/>
+            <Image className="h-full w-full shadow-2xl" pictures={["/api/about/1.jpg", "/api/about/2.jpg", "/api/about/3.jpg", "/api/about/4.jpg"]}/>
           </div>
 
           <div className="w-full h-full p-10 grid grid-rows-2 gap-2 align-middle justify-center">
