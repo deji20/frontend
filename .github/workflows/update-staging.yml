@@ -21,7 +21,7 @@ jobs:
       - name: Creating image
         run: docker build -t ${{ env.image }} .
       - name: Sending image to server
-        uses: ./.github/actions/send-image
+        uses: ./.github/actions/send-build
         with:
           image: ${{ env.image }}
           destination: ${{ secrets.STAGING_DESTINATION }}
