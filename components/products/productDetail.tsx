@@ -15,7 +15,7 @@ export default function ProductDetail(props: {product: ProductModel}){
     const imageDialog = (
         <Dialog onClose={() => dialogOpen(false)} darken={true}>
             <div className="h-full w-full relative">
-                <Img imgClass="rounded" className="shadow-xl rounded" multiple pictures={version.pictures} />
+                <Img imgClass="rounded" className="shadow-xl rounded" pictures={version.pictures} />
             </div>
         </Dialog>
         )
