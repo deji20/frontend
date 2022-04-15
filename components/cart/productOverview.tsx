@@ -22,6 +22,10 @@ export default function ProductOverview(props: OverviewProps){
                             key={i} 
                             product={line.product} 
                             amount={line.amount}
+                            onDelete={(product) => {
+                                cart.products = cart.products.filter((cartProd) => cartProd.id != product._id);
+                                setCart(cart);
+                            }}
                         />)
                     })}
             </ul>

@@ -11,7 +11,10 @@ export default function AddToCart(props: {id: string}){
     return(
         <OffsetButton className="w-48 -right-8" >
                 <div className="grid grid-cols-4 h-full w-full rounded-br-lg rounded-tl-lg shadow-xl cursor-pointer">
-                    <NumberInput className="flex flex-grow rounded-tl-lg text-gray-500 text-center" defaultValue={1} onChange={(val) => setAmount(val)} />
+                    <NumberInput 
+                        className="flex flex-grow rounded-tl-lg text-gray-500 text-center" 
+                        defaultValue={1} 
+                        onChange={(val) => setAmount(val)} />
                     <div 
                         className="col-span-3 bg-green-600 hover:bg-green-800 rounded-br-lg text-white"
                         onClick={() => { 
