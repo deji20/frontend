@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+/*import React, { useEffect, useState } from "react";
 import UseCheckout from "../../hooks/useCheckout";
 import Dialog from "../baseComponents/baseDialog";
 import OffsetButton from "../utilityComponent/offsetButton";
@@ -10,7 +10,7 @@ interface CheckoutProps{
 
 export default function CheckoutButton(props: CheckoutProps){
   //loads NETS checkout script into dom 
-  const check = UseCheckout(props.productIds, "checkout");
+  const check = UseCheckout(, "checkout");
   const [visible, isVisible] = useState(false)
 
   const checkout = async () => {
@@ -34,4 +34,4 @@ export default function CheckoutButton(props: CheckoutProps){
       </OffsetButton>
     </React.Fragment>
   )
-}
+}*/

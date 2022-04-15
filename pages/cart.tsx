@@ -1,7 +1,6 @@
 import { NextPage } from 'next'
 import { ProductModel } from '../models/models'
 import { ReactNode, useEffect, useState } from 'react'
-import CheckoutButton from '../components/checkout/checkoutButton'
 import UseCart from '../hooks/cartHook'
 import ProductLine from '../components/products/productLine'
 import api from '../api'
@@ -35,7 +34,9 @@ const Cart: NextPage<CartProps> = (props: CartProps) => {
   const orderSteps = [
     <ProductOverview products={products || []}/>,
     <ShippingInfo  products={products || []}/>,
-    <NetsCheckout order={{products: cart.products}}/>
+    <NetsCheckout order={{products: cart.products.map((product) => {
+      return {product: product.id, amount:product.amount}
+    })}}/>
   ];
 
   return (

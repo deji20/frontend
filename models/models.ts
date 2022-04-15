@@ -10,7 +10,7 @@ export interface Customer{
 
 export interface Order{
     products: {
-        product: string| ProductModel,
+        product: string | ProductModel,
         amount: number,
     }[];
 } 
