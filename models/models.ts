@@ -1,3 +1,20 @@
+export interface Customer{
+    firstName: string,
+    lastName: string,
+    address: string,
+    city: string,
+    postCode: string,
+    email: string,
+    phone: string
+}
+
+export interface Order{
+    products: {
+        product: string| ProductModel,
+        amount: number,
+    }[];
+} 
+
 export interface ProductModel{
     _id: string,
     price: number,

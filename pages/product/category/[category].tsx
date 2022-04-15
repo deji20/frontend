@@ -23,7 +23,7 @@ const CategoryPage: NextPage<CategoryProps> = (props: CategoryProps) => {
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
         <div className="flex justify-center align-middle">
-          <h1 className="my-10 text-6xl text-gray-300">
+          <h1 className="py-10 text-6xl font-extralight text-gray-300 tracking-wider">
             {props.category}
           </h1>
         </div>
@@ -38,7 +38,7 @@ export default CategoryPage
 export async function getServerSideProps(props: { params: { category: string } }){
   let products: ProductModel[] = [];
   products = await api.get<ProductModel[]>(`/product?filter=categories=${props.params.category}`);
-  console.log(props.params.category);
+  
   return {
     props:{
       category: props.params.category,

@@ -11,37 +11,32 @@ import useSWR from "swr";
 interface ProductLineProps{
     product: ProductModel;
     amount: number;
+    className? : string;
 }
 
 export default function ProductLine( props: ProductLineProps ){
     const [cart, setCart] = UseCart();
     return (
-        <Link href={`/product/${props.product._id}`} passHref>
-            <a className="cursor-pointer">
-                <div className="grid grid-cols-12 bg-gray-100 bg-opacity-40 m-5 p-1 min-h-[50px] rounded hover:shadow-inner shadow-2xl drop-shadow-2xl text-white text-center font-extralight">
-                    <div className="col-span-2">
-                        {props.product.version && <Img className="shadow-2xl" pictures={props.product.version[0].pictures}/> }
-                    </div>
-                    <div className="col-span-4 flex justify-center place-items-center">
-                        {props.product.name}
-                    </div>
-                    <div className="col-span-1 flex justify-center place-items-center">
-                        {props.amount}
-                    </div>
-                    <div className="col-span-4 flex justify-center place-items-center">
-                        <div className="flex flex-grow h-full justify-end place-items-end">
-                            <Pricetag className="rounded bg-green-900 bg-opacity-40" price={props.product?.price || 0}/>
+        <li className={props.className}>
+            <Link href={`/product/${props.product._id}`} passHref>
+                <a className="cursor-pointer">
+                    <div className="flex bg-white bg-opacity-20 border-2 border-opacity-20 rounded-lg hover:shadow-inner shadow-2xl drop-shadow-2xl text-white tracking-wider text-center font-light">
+                        <div className="w-24">
+                            {props.product.version && <Img imgClass="rounded-l-lg" className="shadow-2xl" pictures={props.product.version[0].pictures}/> }
+                        </div>
+                        <div className="px-2 flex flex-grow place-items-center ">
+                            {props.product.name}
+                        </div>
+
+                        <div className="flex flex-shrink justify-center">
+                            <div className="flex flex-col text-center h-full justify-between place-items-end">
+                                <p className="text-center w-full pt-1">{props.amount}</p>
+                                <Pricetag className="rounded-tl text-white font-bold bg-white bg-opacity-20" price={props.product?.price || 0}/>
+                            </div>
                         </div>
                     </div>
-                    <div className="flex flex-grow justify-end" onClick={(event) => {
-                            event.preventDefault()
-                            cart.products = cart.products.filter(prod => prod.id !== props.product._id);
-                            setCart(cart);
-                        }} >
-                        <Img className="h-full w-5 transition-all duration-300 hover:w-6" pictures={["/api/icons/trash.svg"]}/>
-                    </div>
-                </div>
-            </a>
-        </Link>
+                </a>
+            </Link>
+        </li>
         )
 }

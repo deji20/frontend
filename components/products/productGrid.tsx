@@ -9,25 +9,9 @@ interface GridProps{
 }
 
 export default function ProductGrid(props: GridProps){
-        let productSquares = props.products?.map((product, index) => {
-                return (
-                        <Link key={index} href={"/product/" + product._id} passHref> 
-                                <Product product={product}/> 
-                        </Link>
-                )
-        }) || [];
-        
-        let gridCols = [];
-        let gridAmount = props.products?.length || 0;
-        for(let i = 0; i < gridAmount; i++){
-                let amount = productSquares.length / gridAmount;
-                gridCols.push(
-                        <div key={i}>
-                                {productSquares.slice(i * amount, (i+1) * amount)}
-                        </div>
-                        );
-        }
-        let grid = <div className={props.className + " grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 transform duration-500 w-full"}> {gridCols} </div>
-        //let grid = <div className="flex flex-col flex-wrap transform duration-500 w-screen">{ productSquares }</div>
-        return grid;
+        return (
+                <div className={`${props.className} grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-5 px-5 transform duration-500 w-full`}> 
+                        { props.products?.map((product, index) => <Product key={index} product={product}/>)} 
+                </div>
+        )
 }

@@ -2,6 +2,9 @@
 module.exports = {
   reactStrictMode: true,
   images:{
-    domains: ["picsum.photos", "localhost", "database-api"]
+    domains: ["localhost", "database-api", "api", "http://api"]
+  },
+  scripts:{
+    domains: ["test.checkout.dibspayment.eu"]
   }
 }

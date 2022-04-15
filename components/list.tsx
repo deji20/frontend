@@ -17,17 +17,17 @@ export default function List(props: ListProps){
     const [selected, changeSelected] = useState(props.selected);
 
     return(
-        <ul className="grid grid-flow-col shadow-xl text-gray-200 bg-gray-900 bg-opacity-50 overflow-y-hidden overflow-x-auto z-40" >
+        <ul className="grid grid-flow-col shadow-xl text-gray-200 bg-black bg-opacity-30 overflow-y-hidden overflow-x-auto z-40" >
             {props.headers.map((header) => {
                 return (
-                    <li className="flex-grow min-w-[5rem] text-center border border-white hover:border-opacity-60 border-opacity-5 cursor-pointer tracking-wider transform duration-300" 
+                    <li className="flex flex-grow justify-center min-w-[5rem] text-center border-l border-r py-1 border-white hover:opacity-100 opacity-60 border-opacity-40 cursor-pointer tracking-wider transform duration-300" 
                         key={header}
                         onClick={(event) => {
                             changeSelected(header)
                             let item = (event.target as HTMLLIElement)
                             props.onChange && props.onChange(item.innerText, event);
                         }}>
-                        <span className={"hover:text-white text-sm hover:opacity-90 transform duration-300 " + ((selected === header && "opacity-90") || "opacity-40")}>{header}</span>
+                        <span className={"text-sm tracking-wider" + ((selected === header && "opacity-90") || "opacity-40")}>{header}</span>
                     </li>)
             })}
         </ul>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import UseCheckout from "../../hooks/useCheckout";
 import Dialog from "../baseComponents/baseDialog";
 import OffsetButton from "../utilityComponent/offsetButton";
-import CheckoutForm from "./checkoutForm";
+import CheckoutForm from "./customerForm";
 
 interface CheckoutProps{
   productIds: string[];

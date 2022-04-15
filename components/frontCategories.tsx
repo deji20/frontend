@@ -20,7 +20,6 @@ async function getPictures (category: string){
 
 export default function FrontCategories(props: CategoryProps){
     const {data: pictures, error} = useSWR<Picture[]>(props.name, getPictures)
-
     return(
         <Link href={props.href} passHref>
             <a>
@@ -34,14 +33,14 @@ export default function FrontCategories(props: CategoryProps){
                         </div>
                         <div className="absolute h-full w-full">
                             <div className="w-full absolute opacity-70 blur-sm">
-                                <Img className="border rounded" pictures={pictures} />
+                                <Img autoScroll={3000 + (Math.random() * 5000)} className="border rounded" pictures={pictures} />
                             </div>
                             <div className="w-full absolute opacity-70 bottom-0 blur-sm">
-                                <Img className="border rounded" pictures={pictures} />
+                                <Img autoScroll={3000 + (Math.random() * 5000)} className="border rounded" pictures={pictures} />
                             </div>
                         </div>
                         <div className="w-full scale-95 place-self-center">
-                            <Img className="rounded" pictures={pictures} />
+                            <Img autoScroll={3000 + (Math.random() * 5000)} className="rounded" pictures={pictures} />
                         </div>
                     </div>
             </a>

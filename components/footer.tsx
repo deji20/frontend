@@ -2,8 +2,8 @@ import Img from "./image";
 
 export default function Footer(){
     return (
-        <div className='bg-gray-700 text-[0.8rem] w-full p-2 grid grid-cols-2 place-items-center text-white font-light tracking-wider'>
-            <ul className=''>
+        <div className='bg-gray-900 text-[0.8rem] min-w-screen py-2  grid grid-cols-2 place-items-center text-white font-light tracking-wider'>
+            <ul className='grid gap-x-2 grid-cols-2'>
                 <li>Phone: +4571360354</li>
                 <li>Email: </li>
                 <li>Fax: </li>

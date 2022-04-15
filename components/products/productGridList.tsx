@@ -17,27 +17,22 @@ export default function ProductGridList(props: CategoryGridProps){
     const [category, setCategory] = useState<string>(props.categories?.[0]);
     const [products, setProducts] = useState<ProductModel[]>([])
 
-    console.log(category);
-
     useEffect(() => {
         getProductsByCategory(category).then(res => setProducts(res));
     }, [category]) 
 
     return (
         <div className={props.className}>
-            <List headers={props.categories || []} onChange={async (selected, event) => {
-                setCategory(selected);
-                api.get<ProductModel[]>(`/product?filter=categories=${selected}`).then(res => {
-                    
-                });
-            }} 
+            <List 
+                headers={props.categories || []} 
+                onChange={async (selected, event) => setCategory(selected)}
             selected={props.categories?.[0]}/>
-            <div className="px-10">
+            <div className="px-10 py-5">
                 <ProductGrid products={products || []} />
             </div>
-            <div className="bg-gray-900 mx-auto pb-5 justify-center flex">
+            <div className="mx-auto pb-5 justify-center flex">
                 <Link passHref href={`/product/category/${category}`} >
-                    <div className="shadow-2xl rounded-2xl p-1 px-3 text-white text-center bg-blue-400 bg-opacity-30 cursor-pointer">
+                    <div className="shadow-2xl rounded-2xl p-1 px-3 text-white text-center bg-black bg-opacity-20 hover:shadow-inner hover:bg-opacity-30 cursor-pointer">
                         <span className="font-light">Show More</span>
                     </div>
                 </Link>

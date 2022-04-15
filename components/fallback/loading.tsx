@@ -1,12 +1,9 @@
+import Image from "../image";
+
 interface LoadingProps{
-    message?: string,
-    className?: string,
+    className?: string;
 }
 
 export default function Loading(props: LoadingProps){
-    return (
-        <div className={`flex flex-grow justify-center align-middle bg-gray-800 overflow-hidden ${props.className}`}>
-            <p>{props.message}</p>
-        </div>
-    )
+    return <div id="" className={`h-20 w-20 ${props.className}`}><Image pictures={["/assets/loading.svg"]}/></div>
 }

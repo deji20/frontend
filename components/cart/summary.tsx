@@ -14,7 +14,7 @@ export default function Summary(props: SummaryProps){
             <div>
                 <table className="w-full">
                     <thead className="text-center text-sm tracking-wider">
-                        <tr className=" bg-white bg-opacity-25 border-white font-light border-opacity-25">
+                        <tr className=" bg-black bg-opacity-75 border-white font-light border-opacity-25">
                             <th className="px-10 py-5"></th>
                             <th className="border-r border-white border-opacity-25 px-4">Navn</th>
                             <th className="border-r border-white border-opacity-25 px-4">Mængde</th>
@@ -25,7 +25,7 @@ export default function Summary(props: SummaryProps){
                         {
                         props.products.map((line) => {
                             return (
-                                    <tr className="border-b bg-gray-600 border-white border-opacity-25 last:border-none">
+                                    <tr className="border-b bg-black bg-opacity-50 border-white border-opacity-25 last:border-none">
                                         <td>
                                             <a href={`/product/${line.product._id}`}>
                                                 <Image pictures={line.product.version[0].pictures}/>
@@ -41,9 +41,9 @@ export default function Summary(props: SummaryProps){
                 </table>
             </div>
             <div className="flex flex-row flex-grow"></div>
-            <div className="p-1 px-3 flex justify-between bg-black bg-opacity-25">
+            <div className="p-1 px-3 flex justify-between bg-black bg-opacity-60">
                 <span className="tracking-widest text-lg"> Total: </span> 
-                <p className="tracking-wide text-lg">{props.products.reduce<number>((prev, cur) => prev += cur.product.price, 0)}<sub>kr</sub></p>
+                <p className="tracking-wide text-lg">{props.products.reduce<number>((prev, cur) => prev += cur.product.price * cur.amount, 0)}<sub>kr</sub></p>
             </div>
         </div>
     )

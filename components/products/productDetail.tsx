@@ -15,7 +15,7 @@ export default function ProductDetail(props: {product: ProductModel}){
     const imageDialog = (
         <Dialog onClose={() => dialogOpen(false)} darken={true}>
             <div className="h-full w-full relative">
-                <Img className="shadow-xl rounded border" multiple pictures={version.pictures} />
+                <Img imgClass="rounded" className="shadow-xl rounded" multiple pictures={version.pictures} />
             </div>
         </Dialog>
         )
@@ -27,7 +27,7 @@ export default function ProductDetail(props: {product: ProductModel}){
                 <div className="grid grid-rows-2 h-full w-80">
                     <div className="w-full p-10 cursor-pointer hover:p-1 hover:scale-105 transition-transform" onClick={() => dialogOpen(true)}>
                         <div className="relative h-full w-full hover:p-10">
-                            <Img className="rounded-l" pictures={version.pictures} />
+                            <Img className="rounded" pictures={version.pictures} />
                         </div>
                     </div>
                     <div className="flex flex-grow align-middle justify-center">
