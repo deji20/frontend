@@ -10,8 +10,9 @@ class Api{
 
     async get<Model>(url: string){
         try{
-            let res = await (await this.api.get<Model>(`${url}`)).data;
-            return res
+            let res = await this.api.get<Model>(`${url}`);
+            console.log(this.api.defaults.baseURL);
+            return res.data
         }catch(err: any){
             throw new Error(err);
         }
