@@ -6,5 +6,8 @@ module.exports = {
   },
   scripts:{
     domains: ["test.checkout.dibspayment.eu"]
+  },
+  experimental: {
+    outputStandalone: true,
   }
 }
