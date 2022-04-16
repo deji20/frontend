@@ -39,20 +39,3 @@ const Home: NextPage<HomeProps> = (props: HomeProps) => {
   )
 }
 export default Home
-
-export async function getServerSideProps(){
-  try{
-    let categories = await api.get<string[]>("/product/categories");
-    console.log("categories", categories);
-    return {
-      props: {
-        categories: categories,
-      }
-    }
-  }catch(err: any){
-    console.log(err.response.status);
-    return {
-      props: {}
-    }
-  }
-}
