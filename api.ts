@@ -13,6 +13,7 @@ class Api{
             let res = await this.api.get<Model>(`${url}`);
             return res.data
         }catch(err: any){
+            console.log(err);
             throw err;
         }
     }

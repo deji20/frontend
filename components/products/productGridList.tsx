@@ -21,12 +21,13 @@ export default function ProductGridList(props: CategoryGridProps){
         getProductsByCategory(category).then(res => setProducts(res));
     }, [category]) 
 
+    console.log(props.categories);
     return (
         <div className={props.className}>
             <List 
                 headers={props.categories || []} 
                 onChange={async (selected, event) => setCategory(selected)}
-            selected={props.categories?.[0]}/>
+                selected={props.categories?.[0]}/>
             <div className="px-10 py-5">
                 <ProductGrid products={products || []} />
             </div>
