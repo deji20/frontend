@@ -11,7 +11,6 @@ class Api{
     async get<Model>(url: string){
         try{
             let res = await this.api.get<Model>(`${url}`);
-            console.log("using api with url:", this.api.defaults.baseURL);
             return res.data
         }catch(err: any){
             throw new Error(err);

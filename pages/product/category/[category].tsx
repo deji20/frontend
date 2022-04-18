@@ -15,7 +15,6 @@ type CategoryProps = {
 }
 
 const CategoryPage: NextPage<CategoryProps> = (props: CategoryProps) => {
-  api.get<ProductModel[]>(`/product?filter=categories=${"Screenshot"}`).then(res => console.log(res)).catch(err => console.log(err));
   return (
       <div className="w-screen min-h-screen flex flex-col justify-center py-10 bg-gray-800">
         <Head>
