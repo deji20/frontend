@@ -6,7 +6,7 @@ interface ErrorProps{
 export default function Error(props: ErrorProps){
     return (
         <div className={`flex flex-grow justify-center align-middle bg-gray-800 overflow-hidden ${props.className}`}>
-            <p>{props.message}</p>
+            <p>{props.message?.toString()}</p>
         </div>
     )
 }
