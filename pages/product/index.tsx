@@ -9,20 +9,26 @@ import api from '../../api'
 import { useRouter } from 'next/dist/client/router'
 
 type CategoryProps = {
-  query: {
-      category: string
-  }
+    products: ProductModel[];
+    query: {
+        category: string
+    }
 }
 
 const CategoryPage: NextPage<CategoryProps> = (props: CategoryProps) => {
   console.log(props);
-    return <div>property {props.query.category}</div>
+    return <div>category: {props.query.category} has {props.products.length} items </div>
 }
 
-export async function getServerSideProps({query}: any){
+export async function getServerSideProps({query}: {query: {category: string}}){
+    console.log(query.category);
+    let products: ProductModel[] = [];
+    if(query.category) products = await api.get<ProductModel[]>(`/product?filter=categories=${query.category}`);
+
   return {
     props:{
-      query: query
+      query: query,
+      products: products
     }
   }
 }
