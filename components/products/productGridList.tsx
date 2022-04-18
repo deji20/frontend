@@ -25,10 +25,10 @@ export default function ProductGridList(props: CategoryGridProps){
     console.log(products?.[0]);
     return (
         <div className={props.className}>
-            <List 
-                headers={(typeof props.categories !== "string" && props.categories) || []} 
+            {(typeof props.categories !== "string" && props.categories) && <List 
+                headers={props.categories || []} 
                 onChange={async (selected, event) => setCategory(selected)}
-                selected={props.categories?.[0]}/>
+                selected={props.categories?.[0]}/>}
             <div className="px-10 py-5">
                 <ProductGrid products={products || []} />
             </div>
