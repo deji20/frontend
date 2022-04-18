@@ -12,8 +12,6 @@ type CategoryProps = {
   children?: ReactNode, 
 }
 
-const HOST = process.env.NEXT_PUBLIC_HOST;
-
 const ProductPage: NextPage<CategoryProps> = (props: CategoryProps) => {
   return (
     <div>
@@ -27,11 +25,11 @@ const ProductPage: NextPage<CategoryProps> = (props: CategoryProps) => {
 export default ProductPage
 
 export async function getServerSideProps(props: { params: { category: string } }){
-  const products = await api.get<ProductModel[]>("/product?filter=categories="+props.params.category);
-  console.log(props);
+  const products = await api.get<ProductModel[]>("/product?filter=categories="+props.params?.category);
+  console.log("category", props.params?.category);
   return {
     props:{
-      category: props.params.category,
+      category: props.params?.category,
       products: products
     }
   }
