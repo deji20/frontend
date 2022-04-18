@@ -18,10 +18,9 @@ type ProductProps = {
 
 const ProductPage: NextPage<ProductProps> = (props: ProductProps) => {
   const router = useRouter();
-  if(router.isFallback){
-    console.log("!fallback")
-    return <div className='flex flex-grow bg-gray-200'><h1>Loading </h1></div>
-  }
+  
+  if(router.isFallback) return <div className='flex flex-grow bg-gray-200'><h1>Loading </h1></div>
+
   return (
     <div>
       <Head>
@@ -34,15 +33,6 @@ const ProductPage: NextPage<ProductProps> = (props: ProductProps) => {
     </div>
   )
 }
-export default ProductPage
-
-/*export async function getStaticPaths(){
-  let products = await api.get<{_id: string}[]>(`product?projection=_id`);
-  const paths = products.map((prod) => ({
-    params: { id: prod._id },
-  })) 
-  return {paths, fallback: true};
-}*/
 
 export async function getServerSideProps(props: {params: {id: string}}){
   let product = await api.get<ProductModel>("product/"+props.params.id);
@@ -52,3 +42,5 @@ export async function getServerSideProps(props: {params: {id: string}}){
     }
   }
 }
+
+export default ProductPage
