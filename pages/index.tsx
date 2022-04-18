@@ -15,8 +15,8 @@ const API = process.env.DATABASE_API;
 const Home: NextPage = () => {
   const {data: categories, error} = useSWR<string[]>("/product/categories", (path) => api.get(path))
 
-  console.log("alright");
-  if(error) return <Error message={error} className='min-h-screen'/>
+  console.log("alright:", error);
+  if(error) return <Error message={error} className='text-white align-middle min-h-screen'/>
   if(!categories && !error) return <Loading className="min-h-screen"/>
   return (
 
