@@ -10,9 +10,9 @@ interface OverviewProps{
     className?: string;
 }
 
-export default function ProductOverview(props: OverviewProps){
-    const [cart, setCart] = UseCart()
-    
+export default function CartOverview(props: OverviewProps){
+    const {cart, setCart} = UseCart();
+
     return (
         <div className={" " + props.className}>
             <ul className="bg-black bg-opacity-60 p-4 max-h-[90vh] flex flex-col flex-wrap rounded-t-xl shadow-2xl">
@@ -24,8 +24,10 @@ export default function ProductOverview(props: OverviewProps){
                             product={line.product} 
                             amount={line.amount}
                             onDelete={(product) => {
-                                cart.products = cart.products.filter((cartProd) => cartProd.id != product._id);
-                                setCart(cart);
+                                if(cart){ 
+                                    cart.products = cart.products?.filter((cartProd) => cartProd.id != product._id);
+                                    setCart(cart);
+                                }
                             }}
                         />)
                     })}

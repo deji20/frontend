@@ -6,7 +6,7 @@ import ProductLine from '../components/products/productLine'
 import api from '../api'
 import useSWR from 'swr'
 import ShippingInfo from '../components/cart/shippingInformation'
-import ProductOverview from '../components/cart/productOverview'
+import CartOverview from '../components/cart/cartOverview'
 import NetsCheckout from '../components/checkout/netsCheckout'
 
 type CartProps = {
@@ -18,25 +18,16 @@ type CartProps = {
 
 
 const Cart: NextPage<CartProps> = (props: CartProps) => {
-  const [cart, setCart] = UseCart();
+  const { cart, getProducts} = UseCart();
+  const {data: products, error} = useSWR(() => cart, getProducts)
   const [step, setStep] = useState(0);
-  
-  const { data: products, error } = useSWR("product", (key) => {
-    const prodCall = cart.products.map(async (product) => {
-      let res = await api.get<ProductModel>(`${key}/${product.id}`);
-      return {amount: product.amount, product:  res};
-    })
-    return Promise.all(prodCall); 
-  })
 
-  
 
+  console.log(cart?.products);
   const orderSteps = [
-    <ProductOverview key="1" products={products || []}/>,
+    <CartOverview key="1" products={products || []}/>,
     <ShippingInfo  key="2" products={products || []}/>,
-    <NetsCheckout key="3" order={{products: cart.products.map((product) => {
-      return {product: product.id, amount:product.amount}
-    })}}/>
+    <NetsCheckout key="3" order={{products: products || []}}/>
   ];
 
   return (

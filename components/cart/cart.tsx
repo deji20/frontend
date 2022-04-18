@@ -4,7 +4,7 @@ import UseCart from "../../hooks/cartHook";
 import Image from "../image";
 
 export default function Cart(){
-    const [cart, setCart] = UseCart();
+    const {cart} = UseCart();
 
     return (
         <Link href="/cart"  passHref>

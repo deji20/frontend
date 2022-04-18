@@ -16,7 +16,6 @@ interface ProductLineProps{
 }
 
 export default function ProductLine( props: ProductLineProps ){
-    const [cart, setCart] = UseCart();
     return (
         <li className={props.className}>
             <Link href={`/product/${props.product._id}`} passHref>

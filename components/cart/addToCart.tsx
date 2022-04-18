@@ -6,7 +6,7 @@ import OffsetButton from "../utilityComponent/offsetButton";
 import NumberInput from "../input/numberInput";
 
 export default function AddToCart(props: {id: string}){
-    const [cart, setCart] = UseCart()
+    const {cart, setCart} = UseCart()
     const [amount, setAmount] = useState(1);
     return(
         <OffsetButton className="w-48 -right-8" >
@@ -18,11 +18,13 @@ export default function AddToCart(props: {id: string}){
                     <div 
                         className="col-span-3 bg-green-600 hover:bg-green-800 rounded-br-lg text-white"
                         onClick={() => { 
-                            cart.products.push({
-                                id: props.id, 
-                                amount: amount
-                            });
-                            setCart(cart);
+                            if(cart){
+                                cart.products.push({
+                                    id: props.id, 
+                                    amount: amount
+                                });
+                                setCart(cart);
+                            }
                         }}>
                         <div className="flex flex-grow justify-center h-full place-items-center">
                             <p>Add To Cart</p>
