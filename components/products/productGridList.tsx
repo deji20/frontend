@@ -21,7 +21,8 @@ export default function ProductGridList(props: CategoryGridProps){
         getProductsByCategory(category).then(res => setProducts(res));
     }, [category]) 
 
-    console.log(props.categories);
+    console.log("categories", props.categories);
+    console.log("products", products);
     console.log(products?.[0]);
     return (
         <div className={props.className}>
