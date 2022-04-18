@@ -12,12 +12,7 @@ import Loading from '../components/fallback/loading'
 const PUBLIC_API = process.env.NEXT_PUBLIC_API;
 const API = process.env.DATABASE_API;
 
-type HomeProps = {
-  categories: string[], 
-  children?: ReactNode
-}
-
-const Home: NextPage<HomeProps> = (props: HomeProps) => {
+const Home: NextPage = () => {
   const {data: categories, error} = useSWR<string[]>("/product/categories", (path) => api.get(path))
 
   if(error) return <Error message={error} className='min-h-screen'/>
