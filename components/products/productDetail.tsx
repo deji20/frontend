@@ -5,11 +5,13 @@ import { ProductModel } from "../../models/models";
 import Dialog from "../baseComponents/baseDialog";
 import OffsetButton from "../utilityComponent/offsetButton";
 import AddToCart from "../cart/addToCart";
+import Loading from "../fallback/loading";
 
 export default function ProductDetail(props: {product: ProductModel}){
     const [dialog, dialogOpen] = useState(false)
     const [dialogImage, changeImage] = useState(0)
 
+    if(!props.product?.version?.[0]) return <Loading/>
     let version = props.product.version[0]
 
     const imageDialog = (
