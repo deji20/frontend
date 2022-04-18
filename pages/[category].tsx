@@ -5,6 +5,7 @@ import { ReactNode } from 'react'
 import Head from 'next/head';
 import api from '../api'
 import CategoryCard from '../components/category/categoryCard';
+import UseCart from '../hooks/cartHook';
 
 type CategoryProps = {
   category: string;
@@ -14,6 +15,7 @@ type CategoryProps = {
 
 
 const MainCategoryPage: NextPage<CategoryProps> = (props: CategoryProps) => {
+  UseCart();
   return (
       <div className="w-screen min-h-screen flex flex-col justify-center py-10 bg-gray-800">
         <Head>

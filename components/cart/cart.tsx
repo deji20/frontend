@@ -5,6 +5,7 @@ import Image from "../image";
 
 export default function Cart(){
     const [cart, setCart] = UseCart();
+    console.log(cart);
     let cartAmount;
 
     return (

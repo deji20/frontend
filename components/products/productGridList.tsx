@@ -6,7 +6,7 @@ import Product from "./product";
 import axios from "axios";
 import Link from "next/link";
 import api from "../../api";
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
 
 type CategoryGridProps = {
     categories: string[];
@@ -15,15 +15,13 @@ type CategoryGridProps = {
 
 export default function ProductGridList(props: CategoryGridProps){
     const [category, setCategory] = useState<string>(props.categories?.[0]);
-    const [products, setProducts] = useState<ProductModel[]>([])
+    const {data:products, error} = useSWR(`/product?search=categories=${category}`,  (key) => api.get<ProductModel[]>(key))
+    const {mutate} = useSWRConfig();
 
     useEffect(() => {
-        getProductsByCategory(category).then(res => setProducts(res));
+        mutate(category);
     }, [category]) 
-
-    console.log("categories", props.categories);
-    console.log("products", products);
-    console.log(products?.[0]);
+    
     return (
         <div className={props.className}>
             {(typeof props.categories !== "string" && props.categories) && <List 
@@ -42,9 +40,4 @@ export default function ProductGridList(props: CategoryGridProps){
             </div>
         </div>
     )
-}
-
-let getProductsByCategory = async (category: string) => {
-    let products = await api.get<ProductModel[]>(`/product?search=categories=${category}`);
-    return products;
 }

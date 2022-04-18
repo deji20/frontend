@@ -41,6 +41,7 @@ export interface Picture{
 }
 
 export interface CartModel{
+    _id:string,
     products: {
         id:string,
         amount:number,
