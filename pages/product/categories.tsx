@@ -27,8 +27,8 @@ const ProductPage: NextPage<CategoryProps> = (props: CategoryProps) => {
 export default ProductPage
 
 export async function getServerSideProps(props: { params: { category: string } }){
-  let result = await api.get<ProductModel[]>("/product?filter=categories="+props.params.category);
-  let products = result;
+  const products = await api.get<ProductModel[]>("/product?filter=categories="+props.params.category);
+  console.log(props);
   return {
     props:{
       category: props.params.category,
