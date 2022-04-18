@@ -21,9 +21,9 @@ const Cart: NextPage<CartProps> = (props: CartProps) => {
   const [cart, setCart] = UseCart();
   const [step, setStep] = useState(0);
   
-  const { data: products, error } = useSWR("un", (key) => {
+  const { data: products, error } = useSWR("product", (key) => {
     const prodCall = cart.products.map(async (product) => {
-      let res = await api.get<ProductModel>(`product/${product.id}`);
+      let res = await api.get<ProductModel>(`${key}/${product.id}`);
       return {amount: product.amount, product:  res};
     })
     return Promise.all(prodCall); 

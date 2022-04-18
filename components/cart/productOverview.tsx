@@ -11,6 +11,7 @@ interface OverviewProps{
 }
 
 export default function ProductOverview(props: OverviewProps){
+    const [cart, setCart] = UseCart()
     
     return (
         <div className={" " + props.className}>
