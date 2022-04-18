@@ -11,7 +11,7 @@ interface OverviewProps{
 }
 
 export default function ProductOverview(props: OverviewProps){
-    const [cart, setCart] = UseCart()
+    
     return (
         <div className={" " + props.className}>
             <ul className="bg-black bg-opacity-60 p-4 max-h-[90vh] flex flex-col flex-wrap rounded-t-xl shadow-2xl">
