@@ -43,6 +43,6 @@ export default function ProductGridList(props: CategoryGridProps){
 }
 
 let getProductsByCategory = async (category: string) => {
-    let products = await api.get<ProductModel[]>(`/product?category=${category}`);
+    let products = await api.get<ProductModel[]>(`/product/categories?search=categories=${category}`);
     return products;
 }
