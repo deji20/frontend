@@ -7,7 +7,7 @@ interface PriceProps{
 
 export default function Pricetag(props: PriceProps){
     return (
-        <div className={props.className + " px-2 text-white font-thin"}>
+        <div className={props.className + " px-2 text-white font"}>
             <p className="text-sm w-max">{props.price} <sub> Kr </sub></p>
         </div>
     )

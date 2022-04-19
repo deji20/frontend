@@ -6,6 +6,7 @@ import Head from 'next/head';
 import api from '../api'
 import CategoryCard from '../components/category/categoryCard';
 import UseCart from '../hooks/cartHook';
+import CategoryScroll from '../components/category/categoryScroll';
 
 type CategoryProps = {
   category: string;
@@ -28,12 +29,9 @@ const MainCategoryPage: NextPage<CategoryProps> = (props: CategoryProps) => {
           </h1>
         </div>
         <div className="flex flex-grow justify-center flex-wrap">
-          {
-          props.products.map((subCategory, i) => {
-            return <CategoryCard category={subCategory} key={i} />
-          })
-          }
+          {props.products.map((subCategory, i) => <CategoryCard category={subCategory} key={i} />)}
         </div>
+          {props.products.map((subCategory, i) => <CategoryScroll category={subCategory} key={i} />)}
       </div>
   )
 }

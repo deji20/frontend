@@ -13,7 +13,7 @@ export default function ProductHero(props: ProductHeroProps){
     if(!error && !categories) return <p>Loading</p>
     return (
         <div className="flex flex-row w-full justify-evenly p-10 pt-20 bg-black bg-opacity-10">
-            {categories && categories.map((category, i) => <FrontCategories key={i} className='h-[15rem] w-20 sm:h-[25rem] md:h-[35rem] sm:w-40 md:w-52 lg:w-80' name={category} href={`/${category}`}/>) } 
+            {categories && categories.map((category, i) => <FrontCategories key={i} className='h-[15rem] sm:h-[25rem] md:h-[35rem] w-24 sm:w-40 md:w-52 lg:w-96' name={category} href={`/${category}`}/>) } 
         </div>
     )
 }
