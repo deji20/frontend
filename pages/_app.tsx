@@ -3,15 +3,14 @@ import type { AppProps } from 'next/app'
 import NavigationBar from '../components/navigation/navigationBar'
 import { Fragment } from 'react'
 import Footer from '../components/footer'
+import Frame from '../components/frame'
 
 function MyApp({ Component, pageProps }: AppProps) {
   
   return (
-    <Fragment>
-      <NavigationBar/>
+    <Frame>
       <Component {...pageProps} />
-      <Footer/>
-    </Fragment>
+    </Frame>
     )
 }
 export default MyApp

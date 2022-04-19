@@ -28,6 +28,5 @@ export default function UseCart(){
         cart: cart,  
         setCart,
         getProducts
-
     };
 }
