@@ -2,8 +2,6 @@ import { NextPage } from 'next'
 import Image from 'next/image'
 import ProductHero from '../components/products/productHero'
 import ProductGridList from '../components/products/productGridList'
-import { ProductModel } from '../models/models'
-import { ReactNode } from 'react'
 import api from '../api'
 import useSWR from 'swr'
 import Error from '../components/fallback/error'
@@ -15,12 +13,11 @@ const API = process.env.DATABASE_API;
 const Home: NextPage = () => {
   const {data: categories, error} = useSWR<string[]>("/product/categories", (path) => api.get(path))
 
-  console.log("alright:", error);
   if(error) return <Error message={error} className='text-white align-middle min-h-screen'/>
   if(!categories && !error) return <Loading className="min-h-screen"/>
   return (
 
-    <div className="min-h-screen bg-yellow-900 overflow-hidden">
+    <div className="flex flex-col bg-yellow-900 overflow-hidden">
       <div className="absolute w-full h-full opacity-50">
         <Image src="/assets/" alt="" layout="fill"/>
       </div>
