@@ -17,7 +17,7 @@ type CategoryProps = {
 const MainCategoryPage: NextPage<CategoryProps> = (props: CategoryProps) => {
   UseCart();
   return (
-      <div className="w-screen min-h-screen flex flex-col justify-center py-10 bg-gray-800">
+      <div className="flex flex-grow flex-col justify-center py-10 bg-gray-800">
         <Head>
           <title>{props.category}</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />

@@ -31,7 +31,7 @@ const Cart: NextPage<CartProps> = (props: CartProps) => {
   ];
 
   return (
-    <div className="flex flex-col justify-center pt-24 bg-[#60a5fa]">
+    <div className="flex flex-col flex-grow justify-center pt-24 bg-[#60a5fa]">
       <div className='absolute top-14 right-0 flex justify-center gap-2 w-full'>
         {
           orderSteps.map((o, i) => {

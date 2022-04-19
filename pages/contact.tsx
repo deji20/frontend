@@ -17,7 +17,7 @@ const Contact: NextPage = () => {
         }
     }
     return (
-    <div className="flex justify-center bg-gray-900 min-h-screen">
+    <div className="flex flex-grow justify-center bg-gray-900">
         <Head>
             <title>Contact</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />

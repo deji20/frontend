@@ -3,7 +3,7 @@ import Image from '../components/image'
 
 const About: NextPage = () => {
     return (
-      <div className="flex justify-center bg-gray-900 min-h-screen p-20">
+      <div className="flex flex-grow flex-col  justify-center bg-gray-900 p-20">
         <div className="grid grid-cols-2 gap-10 rounded-lg hover:drop-shadow-none">
 
           <div className="w-full h-full p-10 flex align-middle justify-center">

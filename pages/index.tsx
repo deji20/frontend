@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   if(!categories && !error) return <Loading className="min-h-screen"/>
   return (
 
-    <div className="flex flex-col bg-yellow-900 overflow-hidden">
+    <div className="flex flex-grow flex-col bg-yellow-900 overflow-hidden">
       <div className="absolute w-full h-full opacity-50">
         <Image src="/assets/" alt="" layout="fill"/>
       </div>
