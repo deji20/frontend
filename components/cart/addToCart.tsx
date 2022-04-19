@@ -19,6 +19,7 @@ export default function AddToCart(props: {id: string}){
                         className="col-span-3 bg-green-600 hover:bg-green-800 rounded-br-lg text-white"
                         onClick={() => { 
                             if(cart){
+                                if(!cart.products) cart.products = [];
                                 cart.products.push({
                                     id: props.id, 
                                     amount: amount
