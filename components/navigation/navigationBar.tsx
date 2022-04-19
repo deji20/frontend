@@ -2,10 +2,7 @@ import React, { Component, useState } from "react";
 import Link from 'next/link'
 import Cart from "../cart/cart";
 import Img from "../image";
-import PredictInput from "../utilityComponent/predict";
-import api from "../../api";
-import { ProductModel } from "../../models/models";
-import Pricetag from "../pricetag";
+
 import Head from 'next/head'
 import SideBar from "./sidebar";
 import SearchBar from "./searchBar";
