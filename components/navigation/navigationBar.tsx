@@ -19,25 +19,23 @@ export default function NavigationBar(){
                     <link rel="icon" href="/assets/icon.svg"></link>
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                 </Head>
-                <div className="sticky z-50">
-                    <ul className="sticky h-10 w-full bg-dark opacity-30 text-white flex flex-row z-50 transition-opacity duration-400 hover:opacity-90 focus-within:opacity-100">
-                        <li className="">
-                            <Link passHref href="/">
-                                <a >
-                                    <Img className="mx-2 w-10 h-10 relative opacity-80 hover:opacity-100" pictures={["/assets/icon.svg"]}/>
-                                </a>
-                            </Link>
-                        </li>
-                        <li className="flex flex-grow">
-                            <SearchBar/>
-                        </li>
-                        <li className="h-10 w-10 mx-2 relative opacity-80 hover:opacity-100 cursor-pointer" onClick={() => setNav(!navVisible)}>
-                            <Img pictures={["/assets/more.svg"]} />
-                        </li>
-                    </ul> 
-                    <Cart />
-                    <SideBar className={`top-10 ${!navVisible && "translate-x-28"}`}/>
-                </div>
+                <ul className="sticky h-10 w-full bg-dark opacity-80 text-white flex flex-row z-50 transition-opacity duration-400 hover:opacity-90 focus-within:opacity-100">
+                    <li className="">
+                        <Link passHref href="/">
+                            <a >
+                                <Img className="mx-2 w-10 h-10 relative opacity-80 hover:opacity-100" pictures={["/assets/icon.svg"]}/>
+                            </a>
+                        </Link>
+                    </li>
+                    <li className="flex flex-grow">
+                        <SearchBar/>
+                    </li>
+                    <li className="h-10 w-10 mx-2 relative opacity-80 hover:opacity-100 cursor-pointer" onClick={() => setNav(!navVisible)}>
+                        <Img pictures={["/assets/more.svg"]} />
+                    </li>
+                </ul> 
+                <Cart />
+                <SideBar className={`top-10 ${!navVisible && "translate-x-28"}`}/>
             </React.Fragment>
     )
 }
