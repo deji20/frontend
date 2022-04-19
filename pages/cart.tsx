@@ -27,7 +27,7 @@ const Cart: NextPage<CartProps> = (props: CartProps) => {
   const orderSteps = [
     <CartOverview key="1" products={products || []}/>,
     <ShippingInfo  key="2" products={products || []}/>,
-    <NetsCheckout key="3" order={{products: products || []}}/>
+    <NetsCheckout key="3"/>
   ];
 
   return (

@@ -6,12 +6,11 @@ import Image from "../image";
 
 interface CheckoutProps
 {
-    order: Order;
     className?: string;
 }
 
 export default function NetsCheckout(props: CheckoutProps){
-    const check = UseCheckout(props.order, "checkout");
+    const check = UseCheckout("checkout");
     useEffect(() => check && check(), [check]);
 
     return (
