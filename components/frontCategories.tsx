@@ -5,6 +5,8 @@ import axios from "axios";
 import api from "../api";
 import { Picture } from "../models/models";
 import useSWR from "swr";
+import Loading from "./fallback/loading";
+import Error from "./fallback/error";
 
 interface CategoryProps{
     name: string;
@@ -20,6 +22,10 @@ async function getPictures (category: string){
 
 export default function FrontCategories(props: CategoryProps){
     const {data: pictures, error} = useSWR<Picture[]>(props.name, getPictures)
+
+    if(error) return <Error message={error} />
+    if(!error && !pictures) return <Loading/>
+
     return(
         <Link href={props.href} passHref>
             <a>
