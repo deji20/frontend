@@ -15,7 +15,7 @@ export default function CategoryScroll(props: ScollProps){
             <h2 className="text-white text-2xl">{props.category}</h2>
             <div className="w-full inline-block whitespace-nowrap overflow-x-auto text-white relative">
                 <div className="absolute flex w-10 h-full z-50"></div>
-                {products?.map((product) => <Product className="w-24 p-2 inline-block overflow-x-none" product={product}/>)}
+                {products?.map((product, index) => <Product key={index} className="w-24 p-2 inline-block overflow-x-none" product={product}/>)}
             </div>
         </div>
     )
