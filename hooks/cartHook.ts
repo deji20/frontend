@@ -8,7 +8,7 @@ import { CartModel, ProductModel } from "../models/models";
 export default function UseCart(){
     const [cartId, setCartId] = ReactUseCookie("cartId", '0');
     const key = `/cart/${cartId}`;
-    const {data: cart, error} = useSWR<CartModel>(key, (key) => api.get<CartModel>(key))
+    const {data: cart, error} = useSWR<CartModel>(key, (key: string) => api.get<CartModel>(key))
     //mutate updates all components which use the hook when the cart updates
     const {mutate} = useSWRConfig()
 
@@ -17,7 +17,7 @@ export default function UseCart(){
     const setCart = (cart: CartModel) => api.patch<CartModel>(`/cart`, cart._id, cart).then((cart) => mutate(key));
     //retrives the full details for products in cart 
     const getProducts = () => {
-        const prodCall = cart?.products?.map(async (product) => {
+        const prodCall = cart?.products?.map(async (product: any) => {
             let res = await api.get<ProductModel>(`product/${product.id}`);
             return {amount: product.amount, product:  res};
         })
