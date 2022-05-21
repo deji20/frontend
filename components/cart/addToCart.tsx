@@ -5,11 +5,16 @@ import  UseCart from "../../hooks/cartHook";
 import OffsetButton from "../utilityComponent/offsetButton";
 import NumberInput from "../input/numberInput";
 
-export default function AddToCart(props: {id: string}){
+interface CartProps{
+    id: string;
+    className?: string;
+}
+
+export default function AddToCart(props: CartProps){
     const {cart, setCart} = UseCart()
     const [amount, setAmount] = useState(1);
     return(
-        <OffsetButton className="w-48 -right-8" >
+        <button className={`w-full max-w-[10rem] h-10 ${props.className}`} >
                 <div className="grid grid-cols-4 h-full w-full rounded-br-lg rounded-tl-lg shadow-xl cursor-pointer">
                     <NumberInput 
                         className="flex flex-grow rounded-tl-lg text-gray-500 text-center" 
@@ -32,6 +37,6 @@ export default function AddToCart(props: {id: string}){
                         </div>
                     </div>
                 </div>
-            </OffsetButton>
+            </button>
         )
 }

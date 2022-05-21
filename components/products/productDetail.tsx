@@ -24,25 +24,28 @@ export default function ProductDetail(props: {product: ProductModel}){
     return(
         <Fragment>
             {dialog && imageDialog}
-            <div className="flex flex-grow flex-row relative self-center rounded-xl shadow-2xl bg-gray-700">
-                <div className="grid grid-rows-2 h-full w-80">
-                    <div className="w-full p-10 cursor-pointer hover:p-1 hover:scale-105 transition-transform" onClick={() => dialogOpen(true)}>
-                        <div className="relative h-full w-full hover:p-10">
-                            <Img className="rounded" pictures={version?.pictures} />
+            <div className="flex flex-grow flex-row justify-evenly relative self-center gap-5">
+                <div className="cursor-pointer hover:scale-105 transition-transform pt-16" onClick={() => dialogOpen(true)}>
+                        <Img className="rounded w-96" pictures={version?.pictures} />
+                </div>
+                <div className="relative flex flex-col flex-grow font-light max-w-4xl text-white bg-opacity-20">
+                    <h1 className="p-2 text-center text-3xl">{props.product.name}</h1>
+                    <div className="flex flex-row gap-3">
+                        <p className="p-2 text-sm opacity-80 text-left">{version?.description}</p>
+                        <div className="rounded-lg">
+                            <h2 className="p-2 px-5 rounded-t-lg bg-white bg-opacity-10">Details</h2>
+                            <ul>
+                                <li></li>
+                            </ul>
                         </div>
                     </div>
-                    <div className="flex flex-grow align-middle justify-center">
-                        <div className="m-3 p-2 h-20 place-self-center bg-gray-800 bg-opacity-20 rounded-xl shadow-xl">
-                            <p className="font-light text-white">
-                                {version?.description}
-                            </p>
+                    <div className="flex w-full h-full align-bottom">
+                        <div className="flex flex-col m-auto mr-0 mb-0">
+                            <ProductPrice product={props.product} className="text-right w-full pb-2"/>
+                            <AddToCart className="ml-auto mr-0 h-max" id={props.product._id}/>
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-grow h-full">
-                    <ProductPrice product={props.product}/>
-                </div>
-                <AddToCart id={props.product._id}/>
             </div>
         </Fragment>
     )

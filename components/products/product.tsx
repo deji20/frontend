@@ -29,8 +29,8 @@ export default function Product(props: ProductProps){
                             {version?.description}
                         </p>
                     </div>
-                    <div className="h-min flex">
-                        <ProductPrice className="bg-black mt-auto p-1 bg-opacity-10" product={props.product}/> 
+                    <div className="h-min flex text-xs">
+                        <ProductPrice className="bg-black mt-auto bg-opacity-10" product={props.product}/> 
                     </div>
                 </div>
             </div>
