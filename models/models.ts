@@ -26,9 +26,14 @@ export interface ProductModel{
 export interface Version{
     pictures: Picture[];
     description: string;
+    attributes: Attribute[]
     amount: number;
 }
 
+export interface Attribute{
+    name: string,
+    value: string,
+}
 export interface Picture{
     id?: string,
     ratio: {
