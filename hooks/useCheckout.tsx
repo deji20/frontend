@@ -8,7 +8,7 @@ interface CheckoutEvent{
     complete?: (response?: {paymentId: string}) => void
 }
 
-export default function UseCheckout(containerId: string,){
+export default function UseCheckout(containerId: string){
     const {cart} = UseCart()
     //loads NETS checkout script into dom  
     const [loaded, dibs] = useScript("https://test.checkout.dibspayment.eu/v1/checkout.js?v=1", "Dibs");
@@ -19,7 +19,6 @@ export default function UseCheckout(containerId: string,){
     });
     
     if(loaded && dibs && options && !error){
-        console.log(options)
         const checkout = (events?: CheckoutEvent) => {
             const checkFlow = new dibs.Checkout({
                 checkoutKey: options.checkoutId,

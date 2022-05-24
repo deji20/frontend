@@ -11,7 +11,9 @@ interface CheckoutProps
 
 export default function NetsCheckout(props: CheckoutProps){
     const check = UseCheckout("checkout");
-    useEffect(() => check && check(), [check]);
+    useEffect(() => {
+        check && check({complete: (res) => console.log(res)})
+    }, [check]);
 
     return (
         <div className={`w-full ${props.className}`}>

@@ -6,6 +6,7 @@ import Dialog from "../baseComponents/baseDialog";
 import OffsetButton from "../utilityComponent/offsetButton";
 import AddToCart from "../cart/addToCart";
 import Loading from "../fallback/loading";
+import Image from "../image";
 
 export default function ProductDetail(props: {product: ProductModel}){
     const [dialog, dialogOpen] = useState(false)
@@ -24,14 +25,14 @@ export default function ProductDetail(props: {product: ProductModel}){
     return(
         <Fragment>
             {dialog && imageDialog}
-            <div className="flex flex-grow flex-row justify-evenly relative self-center gap-5">
+            <div className="flex flex-row justify-evenly relative mt-10 gap-5">
                 <div className="cursor-pointer hover:scale-105 transition-transform pt-16" onClick={() => dialogOpen(true)}>
                     <Img className="rounded w-96" pictures={version?.pictures} />
                 </div>
                 <div className="relative flex flex-col flex-grow font-light max-w-4xl text-white bg-opacity-20">
                     <h1 className="p-2 text-center text-3xl">{props.product.name}</h1>
-                    <div className="flex flex-row gap-3">
-                        <p className="p-2 text-sm opacity-80 text-left">{version?.description}</p>
+                    <div className="flex flex-col lg:flex-row gap-3">
+                        <p className="p-2 text-sm opacity-80 min-w-[20rem] text-left">{version?.description}</p>
                         <div className="flex flex-col min-w-[20rem] rounded-lg ">
                             <h2 className="p-2 px-5 rounded-t-lg bg-white text-white text-center bg-opacity-20">Details</h2>
                             <table className="">
@@ -49,7 +50,7 @@ export default function ProductDetail(props: {product: ProductModel}){
                         </div>
                     </div>
                     <div className="flex w-full h-full align-bottom">
-                        <div className="flex flex-col m-auto mr-0 mb-0">
+                        <div className="flex flex-col m-auto mr-0 ">
                             <ProductPrice product={props.product} className="text-right w-full pb-2"/>
                             <AddToCart className="ml-auto mr-0 h-max" id={props.product._id}/>
                         </div>
