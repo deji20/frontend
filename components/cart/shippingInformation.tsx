@@ -12,9 +12,9 @@ interface ShippingProps{
 
 export default function ShippingInfo(props: ShippingProps){
     return (
-        <div className='grid grid-cols-2 align-middle justify-center gap-5 px-5 '>
+        <div className='grid md:grid-cols-2 align-middle justify-center gap-5 px-5 '>
+          <Summary className="h-min m-auto w-full rounded shadow-2xl" products={props.products || []}/>
           <CustomerForm onChange={props.customer } className='h-min m-auto '/>        
-          <Summary className="h-min m-auto rounded shadow-2xl" products={props.products || []}/>
         </div>
       )
 }

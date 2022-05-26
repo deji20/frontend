@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { ProductModel } from '../models/models'
+import { Customer, ProductModel } from '../models/models'
 import { ReactNode, useEffect, useState } from 'react'
 import UseCart from '../hooks/cartHook'
 import ProductLine from '../components/products/productLine'
@@ -22,12 +22,15 @@ const Cart: NextPage<CartProps> = (props: CartProps) => {
   const {data: products, error} = useSWR(() => cart, getProducts)
   const [step, setStep] = useState(0);
 
+  const [customer, setCustomer] = useState<Customer>();
+
 
   console.log(cart?.products);
+
   const orderSteps = [
     <CartOverview key="1" products={products || []}/>,
-    <ShippingInfo  key="2" products={products || []}/>,
-    <NetsCheckout key="3"/>
+    <ShippingInfo  key="2" customer={(c) => setCustomer(c)} products={products || []}/>,
+    <NetsCheckout key="3" customerInfo={customer}/>
   ];
 
   return (

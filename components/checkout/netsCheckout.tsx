@@ -1,16 +1,17 @@
 import { useEffect } from "react";
 import UseCheckout from "../../hooks/useCheckout";
-import { Order } from "../../models/models";
+import { Customer, Order } from "../../models/models";
 import Loading from "../fallback/loading";
 import Image from "../image";
 
 interface CheckoutProps
 {
     className?: string;
+    customerInfo?: Customer
 }
 
 export default function NetsCheckout(props: CheckoutProps){
-    const check = UseCheckout("checkout");
+    const check = UseCheckout("checkout", props.customerInfo);
     useEffect(() => {
         check && check({complete: (res) => console.log(res)})
     }, [check]);

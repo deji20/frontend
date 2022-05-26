@@ -13,13 +13,12 @@ export default function NumberInput(props: InputProps){
         <input 
             type="text" 
             className={props.className} 
-            value={value.toString()} 
+            value={(props.defaultValue) && value.toString()} 
             pattern="[0-9]*"
             onChange={
                 (event) => {
                     const input = event.target as HTMLInputElement;
                     if(input.validity.valid && input.value){
-                        console.log(input.value);
                         setValue(Number.parseInt(input.value));
                         props.onChange && props.onChange(value);
                     }else if(!input.value){

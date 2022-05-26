@@ -41,7 +41,7 @@ export default function Summary(props: SummaryProps){
                 </table>
             </div>
             <div className="flex flex-row flex-grow"></div>
-            <div className="p-1 px-3 flex justify-between bg-black bg-opacity-60">
+            <div className="p-1 px-3 flex rounded-b justify-between bg-black bg-opacity-60">
                 <span className="tracking-widest text-lg"> Total: </span> 
                 <p className="tracking-wide text-lg">{props.products.reduce<number>((prev, cur) => prev += cur.product.price * cur.amount, 0)}<sub>kr</sub></p>
             </div>

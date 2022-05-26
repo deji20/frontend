@@ -1,6 +1,7 @@
 import { useState } from "react";
 import UseCart from "../../hooks/cartHook";
 import { Customer } from "../../models/models";
+import NumberInput from "../input/numberInput";
 
 interface FormProps{
     className?: string;
@@ -10,15 +11,25 @@ interface FormProps{
 }
 
 export default function CustomerForm(props: FormProps){
-    const [customer, updateCustomer] = useState(props.customer || {
-        firstName: "",
-        lastName: "",
-        address: "",
-        city: "",
-        postCode: "",
+    const [customer, updateCustomer] = useState<Customer>(props.customer || {
+        privatePerson:{
+            firstName: "",
+            lastName: "",
+        },
+        shippingAddress: {
+            addressLine1: "",
+            addressLine2: "",
+            city: "",
+            country: "DNK",
+            postalCode: ""
+        },
         email: "",
-        phone: ""
-    } as Customer)
+        phone: {
+            prefix: "+45",
+            number: "",
+        }
+    })
+    console.log(customer)
     
     const wrapperClass="flex flex-col"
     const labelClass="pt-1 text-white font-light tracking-wide"
@@ -35,8 +46,9 @@ export default function CustomerForm(props: FormProps){
                             name="firstName" 
                             type="text" 
                             onChange={(event) => {
-                                updateCustomer({...customer, firstName: event.target.value}); 
-                                props.onChange && props.onChange(customer) 
+                                const newCustomer = {...customer, privatePerson: {...customer.privatePerson, firstName: event.target.value}}; 
+                                updateCustomer(newCustomer)
+                                props.onChange && props.onChange(newCustomer);
                             }}/>
                     </div>
                     <div className={wrapperClass}>
@@ -45,30 +57,57 @@ export default function CustomerForm(props: FormProps){
                             name="lastName" 
                             type="text"
                             onChange={(event) => {
-                                updateCustomer({...customer, lastName: event.target.value}); 
-                                props.onChange && props.onChange(customer);
+                                const newCustomer = {...customer, privatePerson: {...customer.privatePerson, lastName: event.target.value}}; 
+                                updateCustomer(newCustomer)
+                                props.onChange && props.onChange(newCustomer);
                             }}/>
                     </div>
                 </div>
+                
                 <div className={wrapperClass}>
                     <label className={labelClass} htmlFor="email">Email:</label>
                     <input className={inputClass} 
                         name="email" 
                         type="email"
                         onChange={(event) => {
-                            updateCustomer({...customer, email: event.target.value});
-                            props.onChange && props.onChange(customer);
+                            const newCustomer = {...customer, email: event.target.value};
+                            updateCustomer(newCustomer);
+                            props.onChange && props.onChange(newCustomer);
                             }}/>
                 </div>
-                
-                <br/>
+
+                <div className={wrapperClass}>
+                    <label className={labelClass}>Telefon:</label>
+                    <div className="flex flex-row">
+                        <input className={`${inputClass} rounded-r-none w-12 text-center`}  
+                            type="text"
+                            maxLength={4}
+                            defaultValue={customer.phone.prefix}
+                            onChange={(event) => {
+                                const newCustomer = {...customer, phone: {...customer.phone, number: event.target.value}}
+                                updateCustomer(newCustomer)
+                                props.onChange && props.onChange(newCustomer);
+                            }}/>
+                        <NumberInput className={`${inputClass} rounded-l-none border-l-black`} onChange={(value) => {
+                                const newCustomer = {...customer, phone: {...customer.phone, number: value.toString()}}
+                                updateCustomer(newCustomer)
+                                props.onChange && props.onChange(newCustomer);
+                            }}/>
+                    </div>
+                </div>
+
+                <br/><div className="h-[1px] w-full bg-white rounded-full bg-opacity-15"></div><br/>
             
                 <div className={wrapperClass}>
                     <label className={labelClass} htmlFor="address">Addresse:</label>
                     <input className={inputClass} 
                         name="address" 
                         type="text"
-                        onChange={(event) => updateCustomer({...customer, address: event.target.value})}/>
+                        onChange={(event) => {
+                            const newCustomer = {...customer, shippingAddress: {...customer.shippingAddress, addressLine1: event.target.value}}
+                            updateCustomer(newCustomer);
+                            props.onChange && props.onChange(newCustomer);
+                            }}/>
                 </div>
 
                 <div className="grid grid-cols-4 gap-3">
@@ -78,9 +117,10 @@ export default function CustomerForm(props: FormProps){
                             name="city" 
                             type="text"
                             onChange={(event) => {
-                                updateCustomer({...customer, city: event.target.value});
-                                props.onChange && props.onChange(customer);
-                                } }/>
+                                const newCustomer = {...customer, shippingAddress: {...customer.shippingAddress, city: event.target.value}}
+                                updateCustomer(newCustomer)
+                                props.onChange && props.onChange(newCustomer);
+                                }}/>
 
                     </div>
                     <div className={wrapperClass}>
@@ -89,8 +129,9 @@ export default function CustomerForm(props: FormProps){
                             name="postCode" 
                             type="text"
                             onChange={(event) => {
-                                updateCustomer({...customer, postCode: event.target.value});
-                                props.onChange && props.onChange(customer);
+                                const newCustomer = {...customer, shippingAddress: {...customer.shippingAddress, postalCode: event.target.value}};
+                                updateCustomer(newCustomer);
+                                props.onChange && props.onChange(newCustomer);
                             }}/>
                     </div>
                 </div>
