@@ -75,7 +75,7 @@ export default function Image(props: ImageProps){
             <div className=" whitespace-nowrap overflow-hidden w-full h-full">
                 {scroll((style, image) => (
                         <div className="relative h-full w-full">
-                            <animated.div style={style} className="relative block h-full w-full">
+                            <animated.div style={style} className="relative m-auto block h-full w-full">
                                 {image}
                             </animated.div> 
                         </div>

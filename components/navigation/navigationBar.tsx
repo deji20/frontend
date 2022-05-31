@@ -13,22 +13,23 @@ export default function NavigationBar(){
             <React.Fragment>
                 <Head>
                     <title>Home</title>
-                    <link rel="icon" href="/assets/icon.svg"></link>
+                    <link rel="icon" href="/assets/logo-black.png"></link>
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                 </Head>
-                <ul className="sticky h-10 w-full bg-dark opacity-80 text-white flex flex-row z-50 transition-opacity duration-400 hover:opacity-90 focus-within:opacity-100">
-                    <li className="">
-                        <Link passHref href="/">
-                            <a >
-                                <Img className="mx-2 w-10 h-10 relative opacity-80 hover:opacity-100" pictures={["/assets/icon.svg"]}/>
-                            </a>
-                        </Link>
-                    </li>
-                    <li className="flex flex-grow">
+                <div className="h-10 bg-black"></div>
+                <ul className="fixed top-0 h-10 w-full bg-dark opacity-80 text-white flex flex-row z-50 transition-opacity duration-400 hover:opacity-90 focus-within:opacity-100">
+                    <li className="flex flex-grow px-24">
                         <SearchBar/>
                     </li>
                     <li className="h-10 w-10 mx-2 relative opacity-80 hover:opacity-100 cursor-pointer" onClick={() => setNav(!navVisible)}>
                         <Img pictures={["/assets/more.svg"]} />
+                    </li>
+                    <li className="sticky top-10 right-0">
+                        <Link passHref href="/">
+                            <a>
+                                <Img className="mx-2 w-24 h-24 rotate-90 relative opacity-80 hover:opacity-100" pictures={["/assets/logo.png"]}/>
+                            </a>
+                        </Link>
                     </li>
                 </ul> 
                 <Cart />

@@ -9,6 +9,7 @@ module.exports = {
       },
       colors: {
         dark: "#10071e",
+        soulBlue: "#60a5fa"
       },
       transitionDuration: {
         2000: '2000ms',

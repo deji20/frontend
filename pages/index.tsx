@@ -17,14 +17,16 @@ const Home: NextPage = () => {
   if(!categories && !error) return <Loading className="min-h-screen"/>
   return (
 
-    <div className="flex flex-grow flex-col bg-yellow-900 overflow-hidden">
-      <div className='px-2 w-full'>
-        <div className='bg-white rounded-b-lg font-light text-white py-1 px-4 text-sm bg-opacity-10 h-full'>
-          <p className="px-4">Vi er en indisk familie som gennem 26 år har dannet erfaringerer med handling og salg mellem indien og den vestlige verden. Vi tager bestilliger til store ordre, kom med foto eller prototype, vi giver garanti, og varende, og garantere returningers muligeheder</p>
+    <div className="flex flex-grow flex-col overflow-hidden bg-black">
+      <div className='bg-gradient-to-tr from-yellow-900 to-blue-400 '>
+        <div className='px-2 w-full'>
+          <div className='bg-white rounded-b-lg font-light text-white py-1 px-4 text-sm bg-opacity-10 h-full'>
+            <p className="px-4">Vi er en indisk familie som gennem 26 år har dannet erfaringerer med handling og salg mellem indien og den vestlige verden. Vi tager bestilliger til store ordre, kom med foto eller prototype, vi giver garanti, og varende, og garantere returningers muligeheder</p>
+          </div>
         </div>
+        <ProductHero/>
       </div>
-      <ProductHero/>
-      { categories && <ProductGridList className="" categories={categories} /> }
+      { categories && <ProductGridList className="bg-blue-900 bg-opacity-50" categories={categories} /> }
     </div>
   )
 }

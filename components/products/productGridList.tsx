@@ -27,7 +27,8 @@ export default function ProductGridList(props: CategoryGridProps){
             {(typeof props.categories !== "string" && props.categories) && <List 
                 headers={props.categories || []} 
                 onChange={async (selected, event) => setCategory(selected)}
-                selected={props.categories?.[0]}/>}
+                selected={props.categories?.[0]}
+                className="h-12 bg-white bg-opacity-10 text-white"/>}
             <div className="px-10 py-5">
                 <ProductGrid products={products || []} />
             </div>

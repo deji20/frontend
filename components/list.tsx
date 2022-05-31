@@ -5,6 +5,7 @@ import Link from "next/link";
 interface ListProps{
     headers: string[];
     selected: string;
+    className?: string
     onChange?: (selected:string, event: MouseEvent) => void;
 };
 
@@ -17,17 +18,17 @@ export default function List(props: ListProps){
     const [selected, changeSelected] = useState(props.selected);
 
     return(
-        <ul className="grid grid-flow-col shadow-xl text-gray-200 bg-black bg-opacity-30 overflow-y-hidden overflow-x-auto z-40" >
+        <ul className={"grid grid-flow-col shadow-xl overflow-y-hidden overflow-x-auto z-40 " + props.className} >
             {props.headers.map((header) => {
                 return (
-                    <li className="flex flex-grow justify-center min-w-[5rem] text-center border-l border-r py-1 border-white hover:opacity-100 opacity-60 border-opacity-40 cursor-pointer tracking-wider transform duration-300" 
+                    <li className="flex flex-grow justify-center min-w-[5rem] text-center border-l border-r py-1 border-white border-opacity-40 opacity-60 active:opacity-100 cursor-pointer tracking-wider transform duration-300" 
                         key={header}
                         onClick={(event) => {
                             changeSelected(header)
                             let item = (event.target as HTMLLIElement)
                             props.onChange && props.onChange(item.innerText, event);
                         }}>
-                        <span className={"text-sm tracking-wider" + ((selected === header && "opacity-90") || "opacity-40")}>{header}</span>
+                        <span className={"tracking-wider m-auto"}>{header}</span>
                     </li>)
             })}
         </ul>
