@@ -6,12 +6,13 @@ import api from '../api'
 import useSWR from 'swr'
 import Error from '../components/fallback/error'
 import Loading from '../components/fallback/loading'
+import FallBack from '../components/fallback/fallback'
 
 const PUBLIC_API = process.env.NEXT_PUBLIC_API;
 const API = process.env.DATABASE_API;
 
 const Home: NextPage = () => {
-  const {data: categories, error} = useSWR<string[]>("/product/categories", (path) => api.get(path))
+  const {data: categories, error} = useSWR<string[]>("/category", (path) => api.get(path))
 
   if(error) return <Error message={error} className='text-white align-middle min-h-screen'/>
   if(!categories && !error) return <Loading className="min-h-screen"/>
@@ -25,7 +26,9 @@ const Home: NextPage = () => {
           </div>
         </div>
         <div className='flex flex-row flex-wrap gap-5 p-20 px-10 justify-evenly'>
-            {categories?.map((category, i)=> <CategoryHero key={i} category={category} className="w-96 h-96" />)}
+            <FallBack data={categories} error={error} >
+              {categories?.map((category, i)=> <CategoryHero key={i} category={category} className="w-96 h-96" />)}
+            </FallBack>
         </div>
       </div>
       { categories && <ProductGridList className="bg-blue-900 bg-opacity-50" categories={categories} /> }
