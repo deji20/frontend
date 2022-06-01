@@ -2,7 +2,7 @@ import { Component, ReactElement, useEffect, useRef, useState } from "react";
 import api from "../../api";
 import { ProductModel } from "../../models/models";
 import Img from "../image";
-import ProductHero from "./productHero";
+import ProductHero from "../category/categoryHero";
 import Link from "next/link";
 import Pricetag from "../pricetag";
 import UseCart from "../../hooks/cartHook";

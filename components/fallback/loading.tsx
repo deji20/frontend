@@ -5,5 +5,8 @@ interface LoadingProps{
 }
 
 export default function Loading(props: LoadingProps){
-    return <div id="" className={`h-20 w-20 ${props.className}`}><Image pictures={["/assets/loading.svg"]}/></div>
+    return (
+        <div className="flex relative h-full w-full">
+            <div id="" className={`m-auto self-center h-20 w-20 ${props.className}`}><Image pictures={["/assets/loading.svg"]}/></div>
+        </div>)
 }

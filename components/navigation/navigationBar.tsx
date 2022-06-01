@@ -18,10 +18,10 @@ export default function NavigationBar(){
                 </Head>
                 <div className="h-10 bg-black"/>
                 <ul className="fixed top-0 h-10 w-full bg-dark opacity-80 text-white flex flex-row z-50 transition-opacity duration-400 hover:opacity-90 focus-within:opacity-100">
-                    <li className="sticky top-10 right-0">
+                    <li className="fixed top-10">
                         <Link passHref href="/">
                             <a>
-                                <Img className="mx-2 w-24 h-24 rotate-90 relative opacity-80 hover:opacity-100" pictures={["/assets/logo.png"]}/>
+                                <Img className="mx-2 w-24 h-24 relative opacity-80 hover:opacity-100" pictures={["/assets/logo.png"]}/>
                             </a>
                         </Link>
                     </li>
@@ -31,7 +31,7 @@ export default function NavigationBar(){
                     <li className="h-10 w-10 mx-2 relative opacity-80 hover:opacity-100 cursor-pointer" onClick={() => setNav(!navVisible)}>
                         <Img pictures={["/assets/more.svg"]} />
                     </li>
-                    <li className="sticky top-10 right-0">
+                    <li className="fixed top-10 right-0">
                         <Link passHref href="/">
                             <a>
                                 <Img className="mx-2 w-24 h-24 rotate-90 relative opacity-80 hover:opacity-100" pictures={["/assets/logo.png"]}/>
@@ -39,13 +39,6 @@ export default function NavigationBar(){
                         </Link>
                     </li>
                 </ul>
-                <li className="sticky top-10 right-0">
-                    <Link passHref href="/">
-                        <a>
-                            <Img className="mx-2 w-24 h-24 rotate-90 relative opacity-80 hover:opacity-100" pictures={["/assets/logo.png"]}/>
-                        </a>
-                    </Link>
-                </li>
                 
                 <Cart />
                 <SideBar className={`top-10 ${!navVisible && "translate-x-28"}`}/>

@@ -1,12 +1,12 @@
 import { Component, useEffect, useState, version } from "react";
-import Img from "./image";
+import Img from "../image";
 import Link from "next/link";
 import axios from "axios";
-import api from "../api";
-import { Picture } from "../models/models";
+import api from "../../api";
+import { Picture } from "../../models/models";
 import useSWR from "swr";
-import Loading from "./fallback/loading";
-import Error from "./fallback/error";
+import Loading from "../fallback/loading";
+import Error from "../fallback/error";
 
 interface CategoryProps{
     name: string;

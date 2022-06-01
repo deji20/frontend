@@ -1,4 +1,4 @@
-import FrontCategories from "../frontCategories";
+import FrontCategories from "./frontCategories";
 
 export default function CategoryCard(props: {category: string}){  
 
