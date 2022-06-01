@@ -38,7 +38,7 @@ export default function Image(props: ImageProps){
         from: {left: "100%", transform: 'translate3d(100%,0,0)' },
         enter: {left: "0%", transform: 'translate3d(0%,0,0)' },
         leave: {position: "absolute"},
-        config:{mass:20, tension:1000, friction:200, clamp:false}
+        config:{mass:60, tension:1000, friction:300, clamp:true}
     });
 
     useEffect(() => {
