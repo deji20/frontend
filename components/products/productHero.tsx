@@ -15,8 +15,8 @@ export default function ProductHero(props: ProductHeroProps){
     if(!error && !categories) return <p>Loading</p>
     return (
         <div className="flex flex-row">
-            {categories?.map((cat) => (
-                <Link href={`/${cat}`} passHref>
+            {categories?.map((cat, i) => (
+                <Link href={`/${cat}`} passHref key={i}>
                     <div className="flex flex-row w-full justify-evenly p-10 pt-20 bg-black bg-opacity-10">
                         <div className="relative rounded-lg shadow-2xl bg-soulBlue bg-opacity-25">
                             <div className="w-96 h-96 rounded-lg shadow-2xl">
