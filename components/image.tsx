@@ -29,7 +29,7 @@ export default function Image(props: ImageProps){
             return <NextImage unoptimized src={img} alt={"icon"} className={props.imgClass} width={1000} height={1000} layout="intrinsic"/>
         }else{
             const img = picture as Picture;
-            return <NextImage unoptimized src={img.path} alt={img.alt} className={props.imgClass} width={img.ratio.x} height={img.ratio.y} layout="responsive"/>
+            return <NextImage unoptimized src={img.path} alt={img.alt || "failed to load picture"} className={props.imgClass} width={img.ratio.x} height={img.ratio.y} layout="responsive"/>
         }
     };
 
