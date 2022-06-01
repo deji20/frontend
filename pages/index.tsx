@@ -25,7 +25,7 @@ const Home: NextPage = () => {
           </div>
         </div>
         <div className='flex flex-row flex-wrap gap-5 p-20 px-10 justify-evenly'>
-            {categories?.map((category)=> <CategoryHero category={category} className="w-96 h-96" />)}
+            {categories?.map((category, i)=> <CategoryHero key={i} category={category} className="w-96 h-96" />)}
         </div>
       </div>
       { categories && <ProductGridList className="bg-blue-900 bg-opacity-50" categories={categories} /> }

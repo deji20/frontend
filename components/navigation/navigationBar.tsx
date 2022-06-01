@@ -6,6 +6,9 @@ import Img from "../image";
 import Head from 'next/head'
 import SideBar from "./sidebar";
 import SearchBar from "./searchBar";
+import Image from "next/image";
+
+import moreIcon from "../../public/assets/more.svg";
 
 export default function NavigationBar(){
     const [navVisible, setNav] = useState(false);
@@ -29,7 +32,7 @@ export default function NavigationBar(){
                         <SearchBar/>
                     </li>
                     <li className="h-10 w-10 mx-2 relative opacity-80 hover:opacity-100 cursor-pointer" onClick={() => setNav(!navVisible)}>
-                        <Img local={true} pictures={["/assets/more.svg"]} />
+                        <Image src={moreIcon} alt="show more" />
                     </li>
                     <li className="fixed top-10 right-0">
                         <Link passHref href="/">
