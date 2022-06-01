@@ -24,13 +24,13 @@ export default function CategoryHero(props: HeroProps){
     return (
             <Link href={`/${props.category}`} passHref>
                 <a>
-                    <div className={`flex flex-row relative justify-evenly rounded-lg shadow-2xl bg-soulBlue bg-opacity-25 w-full h-full ${props.className}`}>
+                    <div className={`group flex flex-row relative justify-evenly rounded-lg shadow-2xl bg-soulBlue bg-opacity-25 w-full h-full ${props.className}`}>
                         <FallBack data={pictures} error={error}>
                             <div className="relative w-full h-full rounded-lg shadow-2xl">
                                     <Image autoScroll={3000 + (Math.random() * 20000)} className="" imgClass="rounded-lg shadow-xl" pictures={pictures}/>
                             </div> 
-                            <div className="absolute top-1/2 w-full m-auto text text-xl text-white">
-                                <div className="w-1/2 m-auto bg-black bg-opacity-60 rounded-3xl shadow-2xl p-1">
+                            <div className="absolute h-full w-full flex m-auto text text-xl text-gray-300">
+                                <div className="p-2 px-5  h-min m-auto bg-black bg-opacity-70 group-hover:text-white rounded-3xl shadow-2xl group-hover:shadow-inner">
                                     <p className="text-2xl font-light tracking-wider text-center">{props.category}</p>
                                 </div>
                             </div>

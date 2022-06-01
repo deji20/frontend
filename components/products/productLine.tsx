@@ -37,7 +37,7 @@ export default function ProductLine( props: ProductLineProps ){
                                 <Img 
                                     className="w-6 h-6 bg-red-700 bg-opacity-70 rounded-tr-lg " 
                                     imgClass="transform-all duration-300 hover:scale-125" 
-                                    pictures={["/api/icons/delete.svg"]}/>
+                                    pictures={["/icons/delete.svg"]}/>
                                 <p className="text-center w-full pt-1">{props.amount}</p>
                                 <Pricetag className="rounded-tl text-white font-bold bg-white bg-opacity-20" price={props.product?.price || 0}/>
                             </div>

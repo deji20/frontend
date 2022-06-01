@@ -34,7 +34,7 @@ export default function PredictInput(props: PredictProps){
             <Img 
                 className={`transform transition-all duration-500 ${visible && results.length > 0 ? "-" : ""}rotate-180`} 
                 pictures={[{
-                    path:"/api/icons/arrow-white.svg",
+                    path:"/icons/arrow-white.svg",
                     alt: "icon",
                     mime: "svg",
                     ratio: {x:1, y:1}

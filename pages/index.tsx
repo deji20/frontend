@@ -24,7 +24,7 @@ const Home: NextPage = () => {
             <p className="px-2 text-xs">Vi er en indisk familie som gennem 26 år har dannet erfaringerer med handling og salg mellem indien og den vestlige verden. Vi tager bestilliger til store ordre, kom med foto eller prototype, vi giver garanti, og varende, og garantere returningers muligeheder</p>
           </div>
         </div>
-        <div className='flex flex-row p-20 px-10 justify-evenly'>
+        <div className='flex flex-row flex-wrap gap-5 p-20 px-10 justify-evenly'>
             {categories?.map((category)=> <CategoryHero category={category} className="w-96 h-96" />)}
         </div>
       </div>

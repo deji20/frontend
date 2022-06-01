@@ -21,7 +21,7 @@ export default function NavigationBar(){
                     <li className="fixed top-10">
                         <Link passHref href="/">
                             <a>
-                                <Img className="mx-2 w-24 h-24 relative opacity-80 hover:opacity-100" pictures={["/assets/logo.png"]}/>
+                                <Img className="mx-2 w-24 h-24 relative opacity-80 hover:opacity-100" pictures={["/icons/logo.png"]}/>
                             </a>
                         </Link>
                     </li>
@@ -29,12 +29,12 @@ export default function NavigationBar(){
                         <SearchBar/>
                     </li>
                     <li className="h-10 w-10 mx-2 relative opacity-80 hover:opacity-100 cursor-pointer" onClick={() => setNav(!navVisible)}>
-                        <Img pictures={["/assets/more.svg"]} />
+                        <Img local={true} pictures={["/assets/more.svg"]} />
                     </li>
                     <li className="fixed top-10 right-0">
                         <Link passHref href="/">
                             <a>
-                                <Img className="mx-2 w-24 h-24 rotate-90 relative opacity-80 hover:opacity-100" pictures={["/assets/logo.png"]}/>
+                                <Img className="mx-2 w-24 h-24 rotate-90 relative opacity-80 hover:opacity-100" pictures={["/icons/logo.png"]}/>
                             </a>
                         </Link>
                     </li>

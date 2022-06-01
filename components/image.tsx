@@ -1,7 +1,8 @@
 import { Picture } from "../models/models";
 import NextImage from "next/image";
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
-import { useSpring, animated, useTransition, config} from "react-spring";
+import { useSpring, animated, useTransition} from "react-spring";
+import config from "../config"
 
 
 interface ImageProps{
@@ -20,16 +21,16 @@ export default function Image(props: ImageProps){
     const [image, setImage] = useState(
         props.pictures?.[imageNr] ? 
         getImage(props.pictures?.[imageNr]) :
-        getImage("/api/icons/blankImage.svg") 
+        getImage("/icons/blankImage.svg") 
         );
         
     function getImage(picture: Picture | string){
         if(typeof picture === "string"){
-            const img = picture as string
-            return <NextImage unoptimized src={img} alt={"icon"} className={props.imgClass} width={1000} height={1000} layout="intrinsic"/>
+            const img = !props.local ? config.imageApi + picture : config.api + picture as string
+            return <NextImage src={img} alt={"icon"} className={props.imgClass} width={1000} height={1000} layout="intrinsic"/>
         }else{
             const img = picture as Picture;
-            return <NextImage unoptimized src={img.path} alt={img.alt || "failed to load picture"} className={props.imgClass} width={img.ratio.x} height={img.ratio.y} layout="responsive"/>
+            return <NextImage src={!props.local ? config.imageApi + img.path : config.api + img.path} alt={img.alt || "failed to load picture"} className={props.imgClass} width={img.ratio.x} height={img.ratio.y} layout="responsive"/>
         }
     };
 
