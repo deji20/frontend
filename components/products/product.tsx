@@ -15,7 +15,7 @@ export default function Product(props: ProductProps){
     let version = props.product?.version[0] || undefined;
 
     return (
-        <Link href={"/product/" + props.product._id}>
+        <Link href={"/product/" + props.product.id}>
             <div className={`pb-2 border-opacity-50 hover:scale-105 duration-1000 transform-all cursor-pointer min-w-[250px]  ${props.className}`}>
                 <div className="row-span-6 border-l justify-center border-opacity-20 border-black">
                     <Img autoScroll={5000} pictures={props.product.version[0].pictures}/>

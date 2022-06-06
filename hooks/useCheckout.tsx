@@ -12,7 +12,7 @@ export default function UseCheckout(containerId: string, customerInfo?: Customer
     const {cart} = UseCart()
     //loads NETS checkout script into dom  
     const [loaded, dibs] = useScript("https://test.checkout.dibspayment.eu/v1/checkout.js?v=1", "Dibs");
-    const {data: options, error} = useSWR(() => cart && "/payment", (key) => Api.post(key, {id: cart?._id, customer: customerInfo}), {
+    const {data: options, error} = useSWR(() => cart && "/payment", (key) => Api.post(key, {id: cart?.id, customer: customerInfo}), {
         revalidateOnFocus: false,
         revalidateIfStale: false,
         revalidateOnReconnect: false,

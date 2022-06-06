@@ -18,7 +18,7 @@ interface ProductLineProps{
 export default function ProductLine( props: ProductLineProps ){
     return (
         <li className={props.className}>
-            <Link href={`/product/${props.product._id}`} passHref>
+            <Link href={`/product/${props.product.id}`} passHref>
                 <a className="cursor-pointer">
                     <div className="flex bg-white bg-opacity-20 border-2 border-opacity-20 rounded-lg hover:shadow-inner shadow-2xl drop-shadow-2xl text-white tracking-wider text-center font-light">
                         <div className="w-24">

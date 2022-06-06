@@ -17,7 +17,7 @@ export default function SearchBar(props: SearchBarProps){
             onClick={(e) => e.preventDefault()}
             listItemFunc={(result: ProductModel) => {
                 return (
-                    <Link href={`/product/${result._id}`} passHref>
+                    <Link href={`/product/${result.id}`} passHref>
                         <a>
                             <div className="grid grid-cols-12 place-items-center p-1 border-b font-thin border-gray-500 bg-gray-800 overflow-x-hidden">
                                 <div className="col-span-1 w-full">

@@ -12,9 +12,9 @@ export default function UseCart(){
     //mutate updates all components which use the hook when the cart updates
     const {mutate} = useSWRConfig()
 
-    if(cart && cartId && cartId != cart._id) setCartId(cart._id);
+    if(cart && cartId && cartId != cart.id) setCartId(cart.id);
     //updates cart 
-    const setCart = (cart: CartModel) => api.patch<CartModel>(`/cart`, cart._id, cart).then((cart) => mutate(key));
+    const setCart = (cart: CartModel) => api.patch<CartModel>(`/cart`, cart.id, cart).then((cart) => mutate(key));
     //retrives the full details for products in cart 
     const getProducts = () => {
         const prodCall = cart?.products?.map(async (product: any) => {

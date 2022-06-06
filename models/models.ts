@@ -32,7 +32,7 @@ export interface Order{
 } 
 
 export interface ProductModel{
-    _id: string,
+    id: string,
     price: number,
     name: string,
     categories: string[],
@@ -62,7 +62,7 @@ export interface Picture{
 }
 
 export interface CartModel{
-    _id:string,
+    id:string,
     products: {
         id:string,
         amount:number,

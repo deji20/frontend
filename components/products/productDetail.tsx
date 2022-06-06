@@ -52,7 +52,7 @@ export default function ProductDetail(props: {product: ProductModel}){
                     <div className="flex w-full h-full align-bottom">
                         <div className="flex flex-col m-auto mr-0 ">
                             <ProductPrice product={props.product} className="text-right w-full pb-2"/>
-                            <AddToCart className="ml-auto mr-0 h-max" id={props.product._id}/>
+                            <AddToCart className="ml-auto mr-0 h-max" id={props.product.id}/>
                         </div>
                     </div>
                 </div>

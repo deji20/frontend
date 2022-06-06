@@ -25,7 +25,7 @@ export default function CartOverview(props: OverviewProps){
                             amount={line.amount}
                             onDelete={(product) => {
                                 if(cart){ 
-                                    cart.products = cart.products?.filter((cartProd) => cartProd.id != product._id);
+                                    cart.products = cart.products?.filter((cartProd) => cartProd.id != product.id);
                                     setCart(cart);
                                 }
                             }}

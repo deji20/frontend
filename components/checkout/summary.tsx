@@ -27,7 +27,7 @@ export default function Summary(props: SummaryProps){
                             return (
                                     <tr key={i} className="border-b bg-black bg-opacity-50 border-white border-opacity-25 last:border-none">
                                         <td>
-                                            <a href={`/product/${line.product._id}`}>
+                                            <a href={`/product/${line.product.id}`}>
                                                 <Image pictures={line.product.version[0].pictures}/>
                                             </a>
                                         </td>
