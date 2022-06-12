@@ -34,7 +34,7 @@ export default function CartOverview(props: OverviewProps){
             </ul>
             <div className="bg-black rounded-b-xl flex tracking-wide justify-between p-2 text-white bg-opacity-25 ">
                 <p className="">Total:</p>
-                <p className="">{props.products.reduce<number>((prev, cur) => prev += cur.product.price, 0)}<sub>kr</sub></p>
+                <p className="">{props.products.reduce<number>((prev, cur) => prev += cur.product.price * cur.product.version[0].amount, 0)}<sub>kr</sub></p>
             </div>
         </div>
     )

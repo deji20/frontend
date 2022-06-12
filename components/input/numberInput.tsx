@@ -20,10 +20,10 @@ export default function NumberInput(props: InputProps){
                     const input = event.target as HTMLInputElement;
                     if(input.validity.valid && input.value){
                         setValue(Number.parseInt(input.value));
-                        props.onChange && props.onChange(value);
+                        props.onChange && props.onChange(Number.parseInt(input.value));
                     }else if(!input.value){
                         setValue(0);
-                        props.onChange && props.onChange(value);
+                        props.onChange && props.onChange(0);
                     }else{
                         event.preventDefault()
                     };
