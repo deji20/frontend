@@ -10,9 +10,9 @@ export default function Footer(){
                 <li>Cvr: 39442663</li>
             </ul>
             <ul className='flex flex-row justify-evenly flex-grow align-middle w-full'>
-                    <Img pictures={["/icons/social/insta.svg"]} className="w-8"/>
-                    <Img pictures={["/icons/social/linked.svg"]} className="w-8 p-1"/>
-                    <Img pictures={["/icons/social/facebook.svg"]} className="w-8 p-[2px]"/>
+                    <Img local={true} pictures={["/icons/social/insta.svg"]} className="w-8"/>
+                    <Img local={true} pictures={["/icons/social/linked.svg"]} className="w-8 p-1"/>
+                    <Img local={true} pictures={["/icons/social/facebook.svg"]} className="w-8 p-[2px]"/>
             </ul>
         </div>
     )

@@ -7,6 +7,7 @@ import useSWR from 'swr'
 import Error from '../components/fallback/error'
 import Loading from '../components/fallback/loading'
 import FallBack from '../components/fallback/fallback'
+import FadingSanskrit from '../components/canvas/fadingSanskrit'
 
 const PUBLIC_API = process.env.NEXT_PUBLIC_API;
 const API = process.env.DATABASE_API;

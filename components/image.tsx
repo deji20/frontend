@@ -26,11 +26,11 @@ export default function Image(props: ImageProps){
         
     function getImage(picture: Picture | string){
         if(typeof picture === "string"){
-            const img = !props.local ? config.imageApi + picture : config.api + picture as string
-            return <NextImage src={img} alt={"icon"} className={props.imgClass} width={1000} height={1000} layout="intrinsic"/>
+            const img = !props.local ? config.imageApi + picture : picture as string
+            return <NextImage src={img} alt={"icon"} blurDataURL="/assets/loading.svg" className={props.imgClass} width={1000} height={1000} layout="intrinsic"/>
         }else{
             const img = picture as Picture;
-            return <NextImage src={!props.local ? config.imageApi + img.path : config.api + img.path} alt={img.alt || "failed to load picture"} className={props.imgClass} width={img.ratio.x} height={img.ratio.y} layout="responsive"/>
+            return <NextImage src={!props.local ? config.imageApi + img.path : config.api + img.path} alt={img.alt || "failed to load picture"} className={props.imgClass} blurDataURL="/assets/loading.svg" width={img.ratio.x} height={img.ratio.y} layout="responsive"/>
         }
     };
 
@@ -74,13 +74,13 @@ export default function Image(props: ImageProps){
                 })}
             </div>
             <div className=" whitespace-nowrap overflow-hidden w-full h-full">
-                {scroll((style, image) => (
+                {props.pictures && props.pictures?.length > 1 ? scroll((style, image) => (
                         <div className="relative h-full w-full">
                             <animated.div style={style} className="relative m-auto block h-full w-full">
                                 {image}
                             </animated.div> 
                         </div>
-                ))}
+                )) : image}
             </div>
         </div>
     )

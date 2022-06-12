@@ -5,9 +5,11 @@ import UseCart from '../hooks/cartHook'
 import ProductLine from '../components/products/productLine'
 import api from '../api'
 import useSWR from 'swr'
-import ShippingInfo from '../components/cart/shippingInformation'
 import CartOverview from '../components/cart/cartOverview'
 import NetsCheckout from '../components/checkout/netsCheckout'
+import ScrollView from '../components/baseComponents/scrollView'
+import Summary from '../components/checkout/summary'
+import CustomerForm from '../components/checkout/customerForm'
 
 type CartProps = {
   products: ProductModel[], 
@@ -20,45 +22,20 @@ type CartProps = {
 const Cart: NextPage<CartProps> = (props: CartProps) => {
   const { cart, getProducts} = UseCart();
   const {data: products, error} = useSWR(() => cart, getProducts)
-  const [step, setStep] = useState(0);
 
   const [customer, setCustomer] = useState<Customer>();
 
-
-  console.log(cart?.products);
-
-  const orderSteps = [
-    <CartOverview key="1" products={products || []}/>,
-    <ShippingInfo  key="2" customer={(c) => setCustomer(c)} products={products || []}/>,
-    <NetsCheckout key="3" customerInfo={customer}/>
-  ];
+  console.log(customer);
 
   return (
-    <div className="flex flex-col flex-grow justify-center pt-24 bg-[#60a5fa]">
-      <div className='absolute top-14 right-0 flex justify-center gap-2 w-full'>
-        {
-          orderSteps.map((o, i) => {
-            return (
-              <div 
-                key={i} 
-                onClick={() => setStep(i)} 
-                className={`p-[6px] w-min rounded-full bg-white transition-all duration-500 bg-opacity-10 hover:bg-opacity-20 ${step == i ? "bg-opacity-50" : ""}`}>
-              </div>
-            )
-          })
-        }
+    <ScrollView>
+      <CartOverview products={products || []}/>
+      <div className='grid md:grid-cols-2 align-middle justify-center gap-5 px-5 '>
+        <Summary className="h-min m-auto w-full rounded shadow-2xl" products={products || []}/>
+        <CustomerForm customer={customer} onChange={c => setCustomer(c)} className='h-min m-auto '/>        
       </div>
-      <div className='w-5/6 justify-center mx-auto'>
-        {orderSteps[step]}
-      </div>
-      <div className='m-10 justify-end p-5 flex text-gray-300'>
-        <button 
-          onClick={() => setStep((step + 1) % orderSteps.length)}
-          className='bg-green-600  w-min text-gray-300 hover:text-white drop-shadow-2xl hover:shadow-inner rounded-full px-10 h-10'>
-            Next
-        </button>
-      </div>
-    </div>)
+      <NetsCheckout customerInfo={customer}/>
+    </ScrollView>)
 }
 
 export default Cart

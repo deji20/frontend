@@ -31,7 +31,7 @@ export default function PredictInput(props: PredictProps){
 
     let dropdown = (
         <div className="w-7 h-7 rounded-full bg-opacity-50">
-            <Img className={`transform transition-all duration-500 ${visible && results.length > 0 ? "-" : ""}rotate-180`}  pictures={["/icons/arrow-white.svg"]}/>
+            <Img className={`transform transition-all duration-500 ${visible && results.length > 0 ? "-" : ""}rotate-180`} local={true} pictures={["/icons/arrow-white.svg"]}/>
         </div>)
     return(
         <div className="flex flex-col align-middle flex-grow" onBlur={onBlurHandler} onFocus={onFocusHandler}>

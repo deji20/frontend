@@ -44,9 +44,5 @@ module.exports = {
   plugins: [
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/line-clamp'),
-    function ({ addVariant }) {
-        addVariant('child', '& > *');
-        addVariant('child-hover', '& > *:hover');
-    },
   ],
 }
