@@ -25,8 +25,6 @@ const Cart: NextPage<CartProps> = (props: CartProps) => {
 
   const [customer, setCustomer] = useState<Customer>();
 
-  console.log(customer);
-
   return (
     <ScrollView>
       <CartOverview products={products || []}/>
