@@ -11,6 +11,7 @@ interface ImageProps{
     pictures?: Picture[] | string[];
     local?: boolean;
     autoScroll?: boolean | number;
+    onScroll?: (index: number) => void; 
     clickScroll?: boolean;
     onClick?: MouseEventHandler;
 }
@@ -53,6 +54,7 @@ export default function Image(props: ImageProps){
             setInterval(() => {
                     if(props.pictures) i = (i+1) % props.pictures.length
                     setImageNr(i);
+                    props.onScroll && props.onScroll(i)
                 }, Number.isInteger(props.autoScroll) ? Number.parseInt(props.autoScroll.toString()) : 5000)
         };
     }, []);
@@ -68,6 +70,7 @@ export default function Image(props: ImageProps){
                             onClick={(e) => {
                                 e.preventDefault()
                                 setImageNr(i);
+                                props.onScroll && props.onScroll(i)
                             }}>        
                         </div>
                     )
