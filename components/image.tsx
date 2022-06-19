@@ -26,12 +26,14 @@ export default function Image(props: ImageProps){
         );
         
     function getImage(picture: Picture | string){
-        if(typeof picture === "string"){
-            const img = !props.local ? config.imageApi + picture : picture as string
-            return <NextImage src={img} alt={"icon"} blurDataURL="/assets/loading.svg" className={props.imgClass} width={1000} height={1000} layout="intrinsic"/>
-        }else{
-            const img = picture as Picture;
-            return <NextImage src={!props.local ? config.imageApi + img.path : config.api + img.path} alt={img.alt || "failed to load picture"} className={props.imgClass} blurDataURL="/assets/loading.svg" width={img.ratio.x} height={img.ratio.y} layout="responsive"/>
+        if(picture){
+            if(typeof picture === "string"){
+                const img = !props.local ? config.imageApi + picture : picture as string
+                return <NextImage src={img} alt={"icon"} blurDataURL="/assets/loading.svg" className={props.imgClass} width={1000} height={1000} layout="intrinsic"/>
+            }else{
+                const img = picture as Picture;
+                return <NextImage src={!props.local ? config.imageApi + img.path : config.api + img.path} alt={img.alt || "failed to load picture"} className={props.imgClass} blurDataURL="/assets/loading.svg" width={img.ratio.x} height={img.ratio.y} layout="responsive"/>
+            }
         }
     };
 
