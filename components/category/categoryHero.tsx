@@ -64,7 +64,7 @@ export default function CategoryHero(props: HeroProps){
                                 />
                         </div> 
                         <div className="absolute h-full w-full flex m-auto text text-xl text-gray-300">
-                            <div className="p-2 px-5  h-min m-auto bg-black bg-opacity-70 group-hover:text-white rounded-3xl shadow-2xl group-hover:shadow-inner">
+                            <div className="p-2 px-5  h-min w-full m-auto bg-black bg-opacity-60 group-hover:text-white shadow-2xl group-hover:shadow-inner">
                                 <p className="text-2xl font-light tracking-wider text-center">{props.category}</p>
                             </div>
                         </div>
