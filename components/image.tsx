@@ -19,11 +19,7 @@ interface ImageProps{
 
 export default function Image(props: ImageProps){
     const [imageNr, setImageNr] = useState(0)
-    const [image, setImage] = useState(
-        props.pictures?.[imageNr] ? 
-        getImage(props.pictures?.[imageNr]) :
-        getImage("/icons/blankImage.svg") 
-        );
+    const [image, setImage] = useState(props.pictures?.[imageNr] ? getImage(props.pictures?.[imageNr]) : getImage("/icons/blankImage.svg") );
         
     function getImage(picture: Picture | string){
         if(picture){
@@ -32,7 +28,8 @@ export default function Image(props: ImageProps){
                 return <NextImage src={img} alt={"icon"} blurDataURL="/assets/loading.svg" className={props.imgClass} width={1000} height={1000} layout="intrinsic"/>
             }else{
                 const img = picture as Picture;
-                return <NextImage src={!props.local ? config.imageApi + img.path : config.api + img.path} alt={img.alt || "failed to load picture"} className={props.imgClass} blurDataURL="/assets/loading.svg" width={img.ratio.x} height={img.ratio.y} layout="responsive"/>
+                if(!img.path) return <NextImage src={"/assets/loading.svg"} alt={"icon"} blurDataURL="/assets/loading.svg" className={props.imgClass} width={1000} height={1000} layout="intrinsic"/>
+                return <NextImage src={!props.local ? config.imageApi + img.path : config.api + img.path} alt={img.alt || "failed to load picture"} className={props.imgClass} blurDataURL="/assets/loading.svg" width={img.ratio?.x || 1000} height={img.ratio?.y || 1000} layout="responsive"/>
             }
         }
     };

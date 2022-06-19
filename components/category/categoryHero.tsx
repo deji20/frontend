@@ -60,7 +60,7 @@ export default function CategoryHero(props: HeroProps){
                                     className="" 
                                     imgClass="rounded-lg shadow-xl"
                                     onScroll={i => setProductNr(i)} 
-                                    pictures={categories?.flatMap(cat => cat.pic)}
+                                    pictures={categories?.map(cat => cat.pic)}
                                 />
                         </div> 
                         <div className="absolute h-full w-full flex m-auto text text-xl text-gray-300">

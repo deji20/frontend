@@ -7,6 +7,7 @@ import api from '../api'
 import CategoryCard from '../components/category/categoryCard';
 import UseCart from '../hooks/cartHook';
 import CategoryScroll from '../components/category/categoryScroll';
+import FrontCategories from '../components/category/frontCategories';
 
 type CategoryProps = {
   category: string;
@@ -29,7 +30,7 @@ const MainCategoryPage: NextPage<CategoryProps> = (props: CategoryProps) => {
           </h1>
         </div>
         <div className="flex flex-grow justify-center flex-wrap">
-          {props.products.map((subCategory, i) => <CategoryCard category={subCategory} key={i} />)}
+          {props.products.map((subCategory, i) => <FrontCategories key={i} className='h-[25rem] w-80 m-5' href={`/product/category/${subCategory}`} name={subCategory}/>)}
         </div>
           {props.products.map((subCategory, i) => <CategoryScroll category={subCategory} key={i} />)}
       </div>

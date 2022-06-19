@@ -13,7 +13,7 @@ interface FallbackProps{
 }
 
 export default function FallBack(props: FallbackProps){
-    if(props.error) return <ErrorMessage key="error" className={props.className} message={props.error.toString()}/>;
-    else if(!props.data) return <Loading key="loading" className={props.className}/>
-    else return <Fragment>{props.children}</Fragment>;
+    if(!props.data && !props.error) return <Loading key="loading" className={props.className}/>
+    if(props.error) return <ErrorMessage key="error" className={props.className} message={props.error?.toString()}/>;
+    return <Fragment>{props.children}</Fragment>;
 }

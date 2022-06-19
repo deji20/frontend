@@ -1,4 +1,4 @@
-import { Component, useEffect, useState, version } from "react";
+import { Component, Fragment, useEffect, useState, version } from "react";
 import Img from "../image";
 import Link from "next/link";
 import axios from "axios";
@@ -7,6 +7,7 @@ import { Picture } from "../../models/models";
 import useSWR from "swr";
 import Loading from "../fallback/loading";
 import Error from "../fallback/error";
+import FallBack from "../fallback/fallback";
 
 interface CategoryProps{
     name: string;
@@ -16,15 +17,30 @@ interface CategoryProps{
 
 
 async function getPictures (category: string){
-    const result = await api.get<{ version: { pictures: Picture[] } [] } []>(`/product?filter=categories=${category}&projection=version.pictures`);
-    return result.flatMap(version => version.version.flatMap(ver => ver.pictures));
+    const result = await api.get<{ 
+        name: string,
+        price: string,
+        version: { 
+            pictures: Picture[] 
+        }[] 
+    }[]>(`/product?filter=categories=${category}&projection=version.pictures,name,price`);
+
+    return (
+        result.flatMap(
+            product => product.version.flatMap(
+                version => 
+                    version.pictures.flatMap(picture => ({ 
+                    name: product.name, 
+                    price: product.price, 
+                    pic: picture
+                }))
+            )
+        )
+    )
 }
-
 export default function FrontCategories(props: CategoryProps){
-    const {data: pictures, error} = useSWR<Picture[]>(props.name, getPictures)
-
-    if(error) return <Error message={error} />
-    if(!error && !pictures) return <Loading/>
+    const {data: pictures, error} = useSWR<{name: string, price: string, pic: Picture}[]>(props.name, getPictures)
+    console.log(pictures);
 
     return(
         <Link href={props.href} passHref>
@@ -39,17 +55,19 @@ export default function FrontCategories(props: CategoryProps){
                                 </div>
                             </div>
                         </div>
-                        <div className="absolute h-full w-full">
-                            <div className="w-full absolute opacity-70 blur-sm">
-                                <Img autoScroll={3000 + (Math.random() * 20000)} className="border rounded" pictures={pictures} />
+                        <FallBack data={pictures} error={error}>
+                            <div className="absolute h-full w-full">
+                                <div className="w-full absolute opacity-70 blur-sm">
+                                    <Img autoScroll={3000 + (Math.random() * 20000)} className="border rounded" pictures={pictures?.map(pic => pic.pic)} />
+                                </div>
+                                <div className="w-full absolute opacity-70 bottom-0 blur-sm">
+                                    <Img autoScroll={3000 + (Math.random() * 20000)} className="border rounded" pictures={pictures?.map(pic => pic.pic)} />
+                                </div>
                             </div>
-                            <div className="w-full absolute opacity-70 bottom-0 blur-sm">
-                                <Img autoScroll={3000 + (Math.random() * 20000)} className="border rounded" pictures={pictures} />
+                            <div className="w-full scale-95 place-self-center">
+                                <Img autoScroll={3000 + (Math.random() * 20000)} className="rounded" pictures={pictures?.map(pic => pic.pic)} />
                             </div>
-                        </div>
-                        <div className="w-full scale-95 place-self-center">
-                            <Img autoScroll={3000 + (Math.random() * 20000)} className="rounded" pictures={pictures} />
-                        </div>
+                        </FallBack>
                     </div>
             </a>
         </Link>
