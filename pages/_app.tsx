@@ -4,12 +4,13 @@ import NavigationBar from '../components/navigation/navigationBar'
 import { Fragment } from 'react'
 import Footer from '../components/footer'
 import Frame from '../components/frame'
+import Dialog from '../components/baseComponents/baseDialog'
 
 function MyApp({ Component, pageProps }: AppProps) {
   
   return (
     <Frame>
-      <Component {...pageProps} />
+        <Component {...pageProps} />
     </Frame>
     )
 }
