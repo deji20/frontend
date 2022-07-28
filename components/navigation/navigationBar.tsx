@@ -30,7 +30,7 @@ export default function NavigationBar(){
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                 </Head>
                 {search}
-                <ul className="fixed top-0 h-10 w-full text-white grid grid-cols-3 z-50 transition-opacity duration-400 hover:opacity-90 focus-within:opacity-100">
+                <ul className="fixed top-0 w-full text-white grid grid-cols-3 z-50 transition-opacity duration-400 hover:opacity-90 focus-within:opacity-100">
                     {/* <li className="fixed top-10">
                         <Link href="/">
                             <Img className="mx-2 w-24 h-24 sticky opacity-80 hover:opacity-100" pictures={["/icons/logo.png"]}/>

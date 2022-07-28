@@ -22,12 +22,12 @@ const MainCategoryPage: NextPage<CategoryProps> = (props: CategoryProps) => {
   UseCart();
   console.log(props.heroPicture);
   return (
-      <div className="flex flex-grow flex-col justify-center py-10 bg-gray-800">
+      <div className="flex flex-grow flex-col justify-center py-10 bg-gradient-to-br from-yellow-900 to-soulBlue">
         <Head>
           <title>{props.category}</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
-        <section className="flex flex-row justify-center align-middle bg-gray-300 h-[40rem] p-14">
+        <section className="flex flex-row justify-center align-middle bg-white bg-opacity-10  my-5 shadow-2xl h-[40rem] p-14">
           <div className='m-auto flex flex-col'>
             <h1 className='text-2xl m-auto text-white text-center'>{ props.category }</h1>
             <p className='m-auto'>These jewels are so amazing like oh my god babe you gotta get these shits</p>
