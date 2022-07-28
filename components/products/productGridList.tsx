@@ -28,13 +28,13 @@ export default function ProductGridList(props: CategoryGridProps){
                 headers={props.categories || []} 
                 onChange={async (selected, event) => setCategory(selected)}
                 selected={props.categories?.[0]}
-                className="h-12 bg-white bg-opacity-10 text-white"/>}
+                className="bg-opacity-10 text-white"/>}
             <div className="px-10 py-5">
                 <ProductGrid products={products || []} />
             </div>
             <div className="mx-auto pb-5 justify-center flex">
                 <Link passHref href={`/product/category/${category}`} >
-                    <div className="shadow-2xl rounded-2xl p-1 px-3 text-white text-center bg-black bg-opacity-20 hover:shadow-inner hover:bg-opacity-30 cursor-pointer">
+                    <div className="rounded-2xl p-1 px-3 text-white text-center bg-black bg-opacity-20  hover:bg-opacity-30 cursor-pointer">
                         <span className="font-light">Show More</span>
                     </div>
                 </Link>

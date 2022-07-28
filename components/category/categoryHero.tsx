@@ -75,8 +75,8 @@ export default function CategoryHero(props: HeroProps){
                     {scroll((style, product) => (
                         <div className="relative h-full w-full">
                             <animated.div style={style} className="relative m-auto text-left p-1 text-sm flex flex-row justify-between h-full w-full">
-                                <p className="drop-shadow-2xl inline-block">{categories?.[product]?.name}</p>
-                                {categories?.[product]?.price && <Pricetag className="text-black text-xs p-1" price={Number.parseInt(categories?.[product]?.price)}/>}        
+                                <p className="drop-shadow-2xl inline-block text-white">{categories?.[product]?.name}</p>
+                                {categories?.[product]?.price && <Pricetag className="text-white text-xs p-1" price={Number.parseInt(categories?.[product]?.price)}/>}        
                             </animated.div>
                         </div>)
                     )}

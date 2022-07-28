@@ -19,18 +19,18 @@ const Home: NextPage = () => {
 
     <div className="flex flex-grow flex-col overflow-hidden bg-black">
       <div className='bg-gradient-to-tr from-yellow-900 to-soulBlue'>
-        <div className='px-24 w-full'>
-          <div className='bg-white rounded-b-lg font-light text-white p-3  text-sm bg-opacity-10 h-full'>
-            <p className="px-2 text-xs">Vi er en indisk familie som gennem 26 år har dannet erfaringerer med handling og salg mellem indien og den vestlige verden. Vi tager bestilliger til store ordre, kom med foto eller prototype, vi giver garanti, og varende, og garantere returningers muligeheder</p>
-          </div>
-        </div>
-        <div className='flex flex-row flex-wrap gap-5 p-20 px-10 justify-evenly'>
+        <div className='flex flex-row flex-wrap gap-5 p-28 px-10 justify-evenly'>
             <FallBack data={categories} error={error} >
               {categories?.map((category, i)=> <CategoryHero key={i} category={category} className="w-96 h-96" />)}
             </FallBack>
         </div>
+        
+        <div className='bg-white text-center rounded-b-lg font-light text-white p-3  text-sm bg-opacity-10 w-full h-full'>
+          <p className="px-2 text-xs">Vi er en indisk familie som gennem 26 år har dannet erfaringerer med handling og salg mellem indien og den vestlige verden. Vi tager bestilliger til store ordre, kom med foto eller prototype, vi giver garanti, og varende, og garantere returningers muligeheder</p>
+        </div>
+
       </div>
-      { categories && <ProductGridList className="bg-blue-900 bg-opacity-50" categories={categories} /> }
+      { categories && <ProductGridList className="bg-blue-900" categories={categories} /> }
     </div>
   )
 }

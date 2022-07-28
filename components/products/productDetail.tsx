@@ -27,7 +27,7 @@ export default function ProductDetail(props: {product: ProductModel}){
             {dialog && imageDialog}
             <div className="flex flex-row justify-evenly relative mt-10 gap-5">
                 <div className="cursor-pointer hover:scale-105 transition-transform pt-16" onClick={() => dialogOpen(true)}>
-                    <Img className="rounded w-96" pictures={version?.pictures} />
+                    <Img className="rounded w-96 shadow-2xl" imgClass="rounded-lg" clickScroll pictures={version?.pictures} />
                 </div>
                 <div className="relative flex flex-col flex-grow font-light max-w-4xl text-white bg-opacity-20">
                     <h1 className="p-2 text-center text-3xl">{props.product.name}</h1>

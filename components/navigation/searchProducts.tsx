@@ -14,35 +14,37 @@ export default function SearchProducts(props: SearchBarProps){
     const [products, setProducts] = useState<ProductModel[]>([]);
 
     return (
-            <div>
+            <div className='w-1/2 h-1/2 m-auto'>
 
                 <PredictInput  
                     placeholder="Search" 
-                    className=" bg-black bg-opacity-50 text-white w-full h-10 flex flex-grow tracking-widest"
+                    className={"bg-white bg-opacity-20 text-white w-full h-10 flex flex-grow tracking-widest " + props.className}
                     onClick={(e) => e.preventDefault()}
                     predictFunc={async (search) => {
                         let result = await api.get<ProductModel[]>(`/product?search=name=${search}`)
                         setProducts(result)
                     }}/>
-                { products.map(result => (
+                <div className='bg-white flex w-full h-full flex-col'>
+                    { products.map(result => (
                         <Link href={`/product/${result.id}`}>
-                                <div className="grid grid-cols-6 place-items-center border-b font-light border-gray-500 bg-black bg-opacity-10 overflow-x-hidden">
-                                    <div className="col-span-1 w-full">
-                                        <div className="max-w-xs">
-                                            <Img className="w-full" pictures={result.version[0].pictures}/>
-                                        </div>
+                                <div className="
+                                    cursor-pointer place-items-center border-b font-light border-gray-500 bg-black bg-opacity-10 overflow-x-hidden
+                                    flex flex-row justify-between
+                                ">
+                                    <div className="min-w-[5rem]">
+                                        <Img className="w-full" pictures={result.version[0].pictures}/>
                                     </div>
-                                    <div className="col-span-2 m-auto text-center">
+                                    <div className="">
                                         {result.name}
                                     </div>
-                                    <div className="col-span-2 m-auto text-center">
+                                    <div className="">
                                         <Pricetag className="text-black" price={result.price}/>
                                     </div>
                                 </div>
                         </Link>
-                    )
-                    )}
+                    ))}
                 </div>
+            </div>
         // listItemFunc={(result: ProductModel) => {
         //     return (
         //         <Link href={`/product/${result.id}`} passHref>
