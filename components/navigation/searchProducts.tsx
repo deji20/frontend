@@ -25,8 +25,8 @@ export default function SearchProducts(props: SearchBarProps){
                         setProducts(result)
                     }}/>
                 <div className='bg-white flex w-full h-full flex-col'>
-                    { products.map(result => (
-                        <Link href={`/product/${result.id}`}>
+                    { products.map((result, i) => (
+                        <Link key={i} href={`/product/${result.id}`}>
                                 <div className="
                                     cursor-pointer place-items-center border-b font-light border-gray-500 bg-black bg-opacity-10 overflow-x-hidden
                                     flex flex-row justify-between
