@@ -7,7 +7,7 @@ interface ScrollEvent{
 export default function UseScroll(onScroll: (event: ScrollEvent) => void){
   
   useEffect(() => {
-    const Scroll = (e) => {
+    const Scroll = (e: any) => {
       const event: ScrollEvent = {
         absolute: {x: e.target.documentElement.scrollTop, y: e.target.documentElement.scrollLeft}
       } 
