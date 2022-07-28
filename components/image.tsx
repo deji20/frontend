@@ -3,6 +3,7 @@ import NextImage from "next/image";
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
 import { useSpring, animated, useTransition} from "react-spring";
 import config from "../config"
+import Link from "next/link";
 
 
 interface ImageProps{
@@ -15,6 +16,7 @@ interface ImageProps{
     local?: boolean;
     autoScroll?: boolean | number;
     clickScroll?: boolean;
+    href?: string;
 
     onScroll?: (index: number) => void; 
     onClick?: MouseEventHandler;
@@ -71,12 +73,10 @@ export default function Image(props: ImageProps){
                 }, Number.isInteger(props.autoScroll) ? Number.parseInt(props.autoScroll.toString()) : 5000)
         };
     }, []);
-        
-    return (
+    const img = (
         <div 
             className={`relative ${props.onClick && "cursor-pointer"} ${props.className}`}
             onClick={(e) => {
-                e.preventDefault();
                 props.onClick && props.onClick(e)
             }}>
             <div className={`absolute bottom-3 w-full flex flex-wrap gap-2 justify-center overflow-visible`}>
@@ -105,4 +105,6 @@ export default function Image(props: ImageProps){
             </div>
         </div>
     )
+
+    return props.href ? <Link href={props.href} passHref><a> {img} </a></Link> : img
 }
